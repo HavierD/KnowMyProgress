@@ -6,7 +6,7 @@ target/
 ### self using ###
 src/main/java/teck/havier/databaseOperator/configHavi3.java
 rawString.txt
-configHavi1.java
+#**/configHavi1.java
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
