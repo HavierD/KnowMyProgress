@@ -1,24 +1,25 @@
 package tech.havier;
 
 
-import com.gargoylesoftware.htmlunit.BrowserVersion;
-import com.gargoylesoftware.htmlunit.WebClient;
-import com.gargoylesoftware.htmlunit.html.*;
+import tech.havier.stringBlockDelegate.TxtFileClearer;
 import tech.havier.stringBlockOperator.StringBlockOperator;
-import tech.havier.userInterface.StringBlockImporter;
+import tech.havier.stringBlockDelegate.StringBlockImporter;
 
-import java.io.IOException;
-import java.util.List;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+
+
+    public static void main(String[] args) throws Exception {
         System.out.println("Welcome to Know Your Progress!");
         System.out.println("Author: Havier.");
         showMenu1();
     }
 
-    private static void showMenu1() throws IOException {
+    private static void showMenu1() throws Exception {
+        System.out.println("-------------------");
+        System.out.println("MAIN MENU: ");
         System.out.println("Please choose: ");
         System.out.println("1. Retrieve words from .txt.");
         System.out.println();
@@ -39,7 +40,7 @@ public class Main {
         }
     }
 
-    private static void retrieveWords() throws IOException {
+    private static void retrieveWords() throws Exception {
 
 
         UniqueTimer timer = new UniqueTimer();
@@ -51,44 +52,108 @@ public class Main {
         System.out.println("Time used: " + timer.getCurrentTimer());
         System.out.println();
         timer.cancel();
-        System.out.println("Found words: " + stringBlockOperator.savedWordsNumber());
-        System.out.println("Found converted words: " + stringBlockOperator.needCheckWordsNumber());
-        System.out.println("Unknown words: " + stringBlockOperator.unknownWordsNumber());
-        System.out.println("-------------------");
+
         showMenu2(stringBlockOperator);
     }
 
-    private static void showMenu2(StringBlockOperator stringBlockOperator) throws IOException {
+    private static void showMenu2(StringBlockOperator stringBlockOperator) throws Exception {
+        System.out.println("-------------------");
+        System.out.println("WORDS OPERATION MENU:");
+        Scanner scanner = new Scanner(System.in);
+        int total = stringBlockOperator.needCheckWordsNumber() + stringBlockOperator.savedWordsNumber() + stringBlockOperator.unknownWordsNumber();
+        if (total == 0) {
+            System.out.println("No words needed to operation!");
+            System.out.println("do you want to clear importing txt file? y/n");
+            String yn = scanner.nextLine().toLowerCase().replaceAll(" ", "");
+            if (yn.equals("")) {
+                System.out.println("clearing...");
+                TxtFileClearer.txtFileClearer();
+                System.out.println("importing txt file clear successfully!");
+            }
+            System.out.println("Enter anything back to main menu.");
+            scanner.nextLine();
+            showMenu1();
+        }
+
+        System.out.println("Found words: " + stringBlockOperator.savedWordsNumber());
+        System.out.println("Found converted words: " + stringBlockOperator.needCheckWordsNumber());
+        System.out.println("Unknown words: " + stringBlockOperator.unknownWordsNumber());
+        System.out.println();
         System.out.println("Please choose next step:");
         System.out.println("1. Read found word list.");
         System.out.println("2. Check converted word list.");
         System.out.println("3. Operate unknown words.");
-        Scanner scanner = new Scanner(System.in);
+
         String option = scanner.nextLine();
+
         switch (option){
             case "1":
                 stringBlockOperator.printSavedWords();
-                System.out.println("Enter anything back to manu.");
-                showMenu2(stringBlockOperator);
+                System.out.println("Upload all found words? Y/N or enter indexes (seperated by whitespace) to ignore particular words");
+                String input = scanner.nextLine().toLowerCase();
+                String yn = input.replaceAll(" ", "");
+                if(yn.equals("")){
+                    System.out.println("Uploading ...");
+                    uploadFoundWords(stringBlockOperator);
+                    showMenu2(stringBlockOperator);
+                }
+                else if(yn.equals("n")){
+                    showMenu2(stringBlockOperator);
+                }
+                else if (input.matches("[0-9 ]+")){
+                    int[] indexes = parseIndexes(input);
+                    stringBlockOperator.bunchIgnore(scanner, indexes);
+                    showMenu2(stringBlockOperator);
+                }else{
+                    System.out.println("invalid input!!!!!!");
+                    showMenu2(stringBlockOperator);
+                }
                 break;
             case "2":
                 stringBlockOperator.printConvertedWords();
-                System.out.println("Enter anything start to confirm.");
-                scanner.nextLine();
+                System.out.println("Do you want to confirm all the transitions? y/ or enter word(s) to correct");
+                String transConfirm = scanner.nextLine();
+                if(transConfirm.equals("")){
+                    stringBlockOperator.uploadCurrentAasBDictionary();
+                }else{
+                    String[] correctingWords = transConfirm.split(" ");
+                    stringBlockOperator.checkConvertedWords(scanner, correctingWords);
+                }
+
+                showMenu2(stringBlockOperator);
                 break;
             case "3":
                 stringBlockOperator.printUnknownWords();
                 System.out.println("Enter anything start to operate");
                 scanner.nextLine();
+                stringBlockOperator.checkUnknownWords(scanner);
+                showMenu2(stringBlockOperator);
                 break;
             default:
                 System.out.println("Invalid Input!");
                 System.out.println("------------------------");
-                showMenu1();
+                showMenu2(stringBlockOperator);
         }
     }
 
 
+
+    private static int[] parseIndexes(String string) {
+        String[] indexes = string.split(" ");
+        int[] intIndexes =new int[indexes.length];
+        try {
+            for (int i = 0; i < indexes.length; i++) {
+                intIndexes[i] = Integer.parseInt(indexes[i]);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return intIndexes;
+    }
+
+    private static void uploadFoundWords(StringBlockOperator stringBlockOperator) throws SQLException, ClassNotFoundException {
+        stringBlockOperator.uploadWords();
+    }
 
 
 }
