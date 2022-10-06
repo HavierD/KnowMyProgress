@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ac61b3e-de78-49fe-a11d-7c28c43356ca" name="Changes" comment="version 0.11 developing. Bugs fixed.">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/sql/SqlOperations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/DatabaseFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/DatabaseFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/SqlOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/sql/SqlOperator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/debugging.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/debugging.java" afterDir="false" />
-    </list>
+    <list default="true" id="1ac61b3e-de78-49fe-a11d-7c28c43356ca" name="Changes" comment="version 0.11 developing. Bugs fixed." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -164,7 +157,7 @@
       <workItem from="1664324950777" duration="53760000" />
       <workItem from="1664601236520" duration="21582000" />
       <workItem from="1664920277608" duration="20892000" />
-      <workItem from="1664945751300" duration="27000000" />
+      <workItem from="1664945751300" duration="27500000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1664749116289</created>
@@ -264,7 +257,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665028798179</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="version 0.11 developing. Bugs fixed.">
+      <created>1665036801863</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1665036801863</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
