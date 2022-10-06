@@ -1,6 +1,7 @@
 package tech.havier;
 
-import tech.havier.databaseOperator.DatabaseDelegate;
+import tech.havier.databaseOperator.DatabaseOperator;
+import tech.havier.databaseOperator.DatabaseFactory;
 
 import java.util.HashMap;
 import java.util.List;
@@ -13,10 +14,10 @@ public class Dictionaries {
 
 
     public Dictionaries() throws Exception {
-        DatabaseDelegate databaseDelegate = new DatabaseDelegate();
-        this.wordTransitionDictionary = databaseDelegate.getTransitionDictionary();
-        this.wordDictionary = databaseDelegate.getWordDictionary();
-        this.ignoreDictionary = databaseDelegate.getIgnoreDictionary();
+        DatabaseOperator databaseOperator = new DatabaseFactory().createDatabaseOperator();
+        this.wordTransitionDictionary = databaseOperator.getTransitionDictionary();
+        this.wordDictionary = databaseOperator.getWordDictionary();
+        this.ignoreDictionary = databaseOperator.getIgnoreDictionary();
     }
 
     public String transitions(String rawWord) {
@@ -40,6 +41,14 @@ public class Dictionaries {
     public boolean doesIgnore(String word) {
         word = formatWord(word);
         if(ignoreDictionary.contains(word)){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean hasExistingAasB(String word) {
+        word = formatWord(word);
+        if (wordTransitionDictionary.containsKey(word)) {
             return true;
         }
         return false;

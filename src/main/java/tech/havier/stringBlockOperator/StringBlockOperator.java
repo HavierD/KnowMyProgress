@@ -2,8 +2,10 @@ package tech.havier.stringBlockOperator;
 
 
 import tech.havier.Dictionaries;
-import tech.havier.databaseOperator.DatabaseDelegate;
+import tech.havier.databaseOperator.DatabaseFactory;
+import tech.havier.databaseOperator.DatabaseOperator;
 import tech.havier.stringBlockDelegate.StringBlockImporter;
+import tech.havier.timeToolkit.HavierTimer;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -18,16 +20,17 @@ public class StringBlockOperator {
     private final ConcurrentHashMap<String, String> convertedWords = new ConcurrentHashMap<>();
     private final List<String> finalUnknownWords = new ArrayList<>();
 
+    private HavierTimer timer = new HavierTimer();
 
     private Dictionaries dictionaries;
-    private DatabaseDelegate databaseDelegate;
+    private DatabaseOperator databaseOperator;
 
 
 
     public StringBlockOperator(StringBlockImporter stringBlockImporter) throws Exception {
 
         this.dictionaries = new Dictionaries();
-        this.databaseDelegate = new DatabaseDelegate();
+        this.databaseOperator = new DatabaseFactory().createDatabaseOperator();
 
         String string = stringBlockImporter.getStringBlock();
         List<String> wordsWithSpace = parseLongStringIntoList(string);
@@ -65,13 +68,15 @@ public class StringBlockOperator {
     }
 
     public void uploadWords() throws SQLException, ClassNotFoundException {
+        timer.start(0);
         for (String e : foundWords) {
             if (dictionaries.hasSaved(e)) {
-                databaseDelegate.updateWord(e);
+                databaseOperator.updateWord(e);
                 continue;
             }
-            databaseDelegate.addNewWord(e);
+            databaseOperator.addNewWord(e);
         }
+        timer.cancel("Uploading found words ");
         foundWords.clear();
         System.out.println("All found words upload successfully! Found-word-list has been cleared.");
     }
@@ -86,7 +91,7 @@ public class StringBlockOperator {
         if(input.equals("")){
             List<String> toRemove = new ArrayList<>();
             for (int e : indexes) {
-                databaseDelegate.uploadNewIgnoredWord(foundWords.get(e));
+                databaseOperator.uploadNewIgnoredWord(foundWords.get(e));
                 toRemove.add(foundWords.get(e));
             }
             foundWords.removeAll(toRemove);
@@ -95,14 +100,17 @@ public class StringBlockOperator {
 
     private void uploadWord(String word) throws SQLException, ClassNotFoundException {
         if (dictionaries.hasSaved(word)) {
-            databaseDelegate.updateWord(word);
+            databaseOperator.updateWord(word);
         }
-        databaseDelegate.addNewWord(word);
+        databaseOperator.addNewWord(word);
     }
 
     public void uploadCurrentAasBDictionary() {
         for (Map.Entry<String, String> e : convertedWords.entrySet()){
-            databaseDelegate.addNewAasB(e.getKey(), e.getValue());
+            if (dictionaries.hasExistingAasB(e.getKey())) {
+                databaseOperator.addNewRecord(e.getValue());
+            }
+            databaseOperator.addNewAasB(e.getKey(), e.getValue());
         }
         System.out.println("Current converted words uploaded successfully!");
         convertedWords.clear();
@@ -180,7 +188,7 @@ public class StringBlockOperator {
 
             if (dictionaries.hasSaved(e) || searchOnWeb(e)) {
                 if(foundWords.contains(e)) continue;
-                foundWords.add(e);
+                foundWordsAdd(e);
                 continue;
             }
             if (e.endsWith("ies")) {
@@ -253,6 +261,14 @@ public class StringBlockOperator {
             finalUnknownWords.add(e);
         }
     }
+
+    private void foundWordsAdd(String e) {
+        if (foundWords.contains(e)) {
+            return;
+        }
+        foundWords.add(e);
+    }
+
     private boolean searchOnWeb(String word) {
             String url = "https://www.oxfordlearnersdictionaries.com/definition/english/" + word;
             try {
@@ -295,8 +311,12 @@ public class StringBlockOperator {
 
         for (String word : correctingWords) {
             if (convertedWords.containsKey(word)) {
-                System.out.println("Treat { " + word + " } as? enter correct word");
-                String yn = scanner.nextLine();
+                System.out.println("Treat { " + word + " } as? enter correct word OR d for discard");
+                String yn = scanner.nextLine().toLowerCase().replaceAll(" ","" );
+                if (yn.equals("d")) {
+                    convertedWords.remove(word);
+                    continue;
+                }
                 confirmAnAasBPair(scanner, word, yn);
                 continue;
             }
@@ -326,7 +346,7 @@ public class StringBlockOperator {
             String input = scanner.nextLine().toLowerCase().replaceAll(" ", "");
             if (input.equals("d")) {
                 toRemove.add(unknownWord);
-                databaseDelegate.uploadNewIgnoredWord(unknownWord);
+                databaseOperator.uploadNewIgnoredWord(unknownWord);
                 continue;
             }
             correctUnknownWord(scanner, unknownWord, input );
@@ -346,11 +366,11 @@ public class StringBlockOperator {
         String input2 = scanner.nextLine();
         if (input2.equals("d")) {
             toRemove.add(unknownWord);
-            databaseDelegate.uploadNewIgnoredWord(unknownWord);
+            databaseOperator.uploadNewIgnoredWord(unknownWord);
             return;
         }
         if ((input2.equals(""))) {
-            databaseDelegate.addNewAasB(unknownWord, input);
+            databaseOperator.addNewAasB(unknownWord, input);
             uploadWord(input);
             toRemove.add(unknownWord);
             return;

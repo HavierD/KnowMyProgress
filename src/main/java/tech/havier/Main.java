@@ -6,7 +6,6 @@ import tech.havier.stringBlockDelegate.TxtFileClearer;
 import tech.havier.stringBlockOperator.StringBlockOperator;
 import tech.havier.timeToolkit.HavierTimer;
 
-import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Main {
@@ -93,7 +92,7 @@ public class Main {
                 String yn = input.replaceAll(" ", "");
                 if(yn.equals("")){
                     System.out.println("Uploading ...");
-                    uploadFoundWords(stringBlockOperator);
+                    stringBlockOperator.uploadWords();
                     showMenu2(stringBlockOperator);
                 }
                 else if(yn.equals("n")){
@@ -145,10 +144,6 @@ public class Main {
             throw new RuntimeException(e);
         }
         return intIndexes;
-    }
-
-    private static void uploadFoundWords(StringBlockOperator stringBlockOperator) throws SQLException, ClassNotFoundException {
-        stringBlockOperator.uploadWords();
     }
 
 }

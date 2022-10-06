@@ -1,5 +1,7 @@
 package tech.havier.databaseOperator;
 
+import tech.havier.GlobalStateManager;
+import tech.havier.stringBlockDelegate.StringBlockImporter;
 import tech.havier.timeToolkit.HavierDate;
 import tech.havier.timeToolkit.HavierTimer;
 
@@ -8,7 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class SqlOperator {
+public class SqlOperator implements DatabaseOperator {
 
     private static final ConfigHavi1 config = new ConfigHavi1();
 
@@ -17,26 +19,30 @@ public class SqlOperator {
     private final List<String> ignoreDictionary = new ArrayList<>();
     private static HavierDate date = new HavierDate();
 
+    private static SqlOperator sqlOperator;
 
     HavierTimer timer = new HavierTimer();
 
-
-
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
-
+    public static SqlOperator getSqlOperatorInstance() throws Exception {
+        if (sqlOperator == null) {
+            sqlOperator = new SqlOperator();
+        }
+        if(StringBlockImporter.isDatabaseNeedRefresh()){
+            refreshDatabase();
+        }
+        return sqlOperator;
     }
 
+    private static void refreshDatabase() throws Exception {
+        sqlOperator = new SqlOperator();
+    }
 
-
-
-    public SqlOperator() throws Exception {
-        initializeTransitionDictionaryFromSql();
+    private SqlOperator() throws Exception {
         initializeWordDictionaryFromSql();
+        initializeTransitionDictionaryFromSql();
         initializeIgnoreDictionaryFromSql();
         date = new HavierDate();
     }
-
-
 
     public HashMap<String, String> getTransitionDictionary() {
         return transitionDictionary;
@@ -46,14 +52,34 @@ public class SqlOperator {
         return wordDictionary;
     }
 
-    private Connection getConnection() throws ClassNotFoundException, SQLException {
-        Class.forName("oracle.jdbc.driver.OracleDriver");
-        Connection connection = DriverManager.getConnection(
-                "jdbc:oracle:thin:@localhost:1521/XEPDB1",
-                config.a, config.b );
-        return connection;
+    public void addNewAasB(String key, String value) {
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            Connection connection = getConnection();
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("insert into a_as_b  values ('" + key + "','" + value + "')");
+            addNewRecord(value);
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
+    public void uploadNewIgnoredWord(String word) {
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            Connection connection = getConnection();
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("insert into ignore_dictionary  values (' " + word + " ')");
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public List<String> getIgnoreDictionary() {
+        return this.ignoreDictionary;
+    }
 
     public void updateWord(String word) throws SQLException, ClassNotFoundException {
         try {
@@ -80,7 +106,7 @@ public class SqlOperator {
         addNewRecord(word);
     }
 
-    private void addNewRecord(String word) {
+    public void addNewRecord(String word) {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             Connection connection = getConnection();
@@ -92,34 +118,6 @@ public class SqlOperator {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-    }
-
-    public void addNewAasB(String key, String value) {
-        try {
-            Class.forName("oracle.jdbc.driver.OracleDriver");
-            Connection connection = getConnection();
-            Statement statement = connection.createStatement();
-            statement.executeUpdate("insert into a_as_b  values ('" + key + "','" + value + "')");
-
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public void uploadNewIgnoredWord(String word) {
-        try {
-            Class.forName("oracle.jdbc.driver.OracleDriver");
-            Connection connection = getConnection();
-            Statement statement = connection.createStatement();
-            statement.executeUpdate("insert into ignore_dictionary  values (' " + word + " ')");
-
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public List<String> getIgnoreDictionary() {
-        return this.ignoreDictionary;
     }
 
     private void initializeWordDictionaryFromSql() throws Exception {
@@ -171,6 +169,13 @@ public class SqlOperator {
         } catch (Exception e) {
             throw new Exception(e);
         }
+    }
+    private Connection getConnection() throws ClassNotFoundException, SQLException {
+        Class.forName("oracle.jdbc.driver.OracleDriver");
+        Connection connection = DriverManager.getConnection(
+                "jdbc:oracle:thin:@localhost:1521/XEPDB1",
+                config.a, config.b );
+        return connection;
     }
 
 }

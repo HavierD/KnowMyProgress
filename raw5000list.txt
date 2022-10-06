@@ -467,7 +467,7 @@ dam n. C1
 damaging adj. C1
 dare v. B2
 darkness n. B2
-database n. B2
+databaseOperator n. B2
 dawn n. C1
 deadline n. B2
 deadly adj. B2

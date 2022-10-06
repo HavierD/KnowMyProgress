@@ -4,17 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ac61b3e-de78-49fe-a11d-7c28c43356ca" name="Changes" comment="version 0.1">
-      <change afterPath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/DatabaseDelegate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/DatabaseType.java" afterDir="false" />
+    <list default="true" id="1ac61b3e-de78-49fe-a11d-7c28c43356ca" name="Changes" comment="version 0.11 developing. Add database delegate.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/tech/havier/GlobalStateManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/DatabaseOperator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/Date.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/timeToolkit/HavierDate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/raw5000list.txt" beforeDir="false" afterPath="$PROJECT_DIR$/raw5000list.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/Dictionaries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/Dictionaries.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/UniqueTimer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/timeToolkit/HavierTimer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/WordElement.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/DatabaseDelegate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/DatabaseFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/SqlOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/SqlOperator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/debugging.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/debugging.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/stringBlockDelegate/StringBlockImporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/stringBlockDelegate/StringBlockImporter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/stringBlockOperator/StringBlockOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/stringBlockOperator/StringBlockOperator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -25,8 +24,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -45,28 +45,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Projects/JavaProjects/_002KnowYourProgress&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.editor&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/Projects/JavaProjects/_002KnowYourProgress",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "actions.on.save"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;oracle&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "oracle"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Projects\JavaProjects\_002KnowYourProgress" />
@@ -80,8 +82,8 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.Main">
-    <configuration name="DatabaseDelegate" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="tech.havier.databaseOperator.DatabaseDelegate" />
+    <configuration name="DatabaseFactory" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="tech.havier.databaseOperator.DatabaseFactory" />
       <module name="_002KnowYourProgress" />
       <extension name="coverage">
         <pattern>
@@ -149,7 +151,7 @@
       <list>
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.TxtFileClearer" />
-        <item itemvalue="Application.DatabaseDelegate" />
+        <item itemvalue="Application.DatabaseFactory" />
         <item itemvalue="Application.HavierDate" />
         <item itemvalue="Application.StringBlockOperator" />
       </list>
@@ -166,7 +168,7 @@
       <workItem from="1664324950777" duration="53760000" />
       <workItem from="1664601236520" duration="21582000" />
       <workItem from="1664920277608" duration="20892000" />
-      <workItem from="1664945751300" duration="12188000" />
+      <workItem from="1664945751300" duration="20127000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1664749116289</created>
@@ -245,7 +247,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664944942471</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="version 0.11 developing. Add database delegate.">
+      <created>1665015954680</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1665015954680</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -266,6 +275,7 @@
     <MESSAGE value="first commit" />
     <MESSAGE value="developing..." />
     <MESSAGE value="version 0.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="version 0.1" />
+    <MESSAGE value="version 0.11 developing. Add database delegate." />
+    <option name="LAST_COMMIT_MESSAGE" value="version 0.11 developing. Add database delegate." />
   </component>
 </project>
