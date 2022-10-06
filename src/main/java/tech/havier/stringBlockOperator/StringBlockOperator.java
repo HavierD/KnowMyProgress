@@ -1,9 +1,8 @@
 package tech.havier.stringBlockOperator;
 
 
-import tech.havier.Date;
 import tech.havier.Dictionaries;
-import tech.havier.databaseOperator.SqlOperator;
+import tech.havier.databaseOperator.DatabaseDelegate;
 import tech.havier.stringBlockDelegate.StringBlockImporter;
 
 import java.io.IOException;
@@ -21,14 +20,14 @@ public class StringBlockOperator {
 
 
     private Dictionaries dictionaries;
-    private SqlOperator sqlOperator;
+    private DatabaseDelegate databaseDelegate;
 
-    private Date date;
+
 
     public StringBlockOperator(StringBlockImporter stringBlockImporter) throws Exception {
-        dictionaries = new Dictionaries();
-        sqlOperator = new SqlOperator();
-        date = new Date();
+
+        this.dictionaries = new Dictionaries();
+        this.databaseDelegate = new DatabaseDelegate();
 
         String string = stringBlockImporter.getStringBlock();
         List<String> wordsWithSpace = parseLongStringIntoList(string);
@@ -68,20 +67,45 @@ public class StringBlockOperator {
     public void uploadWords() throws SQLException, ClassNotFoundException {
         for (String e : foundWords) {
             if (dictionaries.hasSaved(e)) {
-                sqlOperator.updateWord(e);
+                databaseDelegate.updateWord(e);
                 continue;
             }
-            sqlOperator.addNewWord(e);
+            databaseDelegate.addNewWord(e);
         }
         foundWords.clear();
         System.out.println("All found words upload successfully! Found-word-list has been cleared.");
     }
 
+    public void bunchIgnore(Scanner scanner, int[] indexes) {
+        System.out.println("Are you sure to ignore below word(s)? y/ or anything others to cancel");
+        for (int e : indexes) {
+            System.out.print(e + ". ");
+            System.out.println(foundWords.get(e));
+        }
+        String input = scanner.nextLine();
+        if(input.equals("")){
+            List<String> toRemove = new ArrayList<>();
+            for (int e : indexes) {
+                databaseDelegate.uploadNewIgnoredWord(foundWords.get(e));
+                toRemove.add(foundWords.get(e));
+            }
+            foundWords.removeAll(toRemove);
+        }
+    }
+
     private void uploadWord(String word) throws SQLException, ClassNotFoundException {
         if (dictionaries.hasSaved(word)) {
-            sqlOperator.updateWord(word);
+            databaseDelegate.updateWord(word);
         }
-        sqlOperator.addNewWord(word);
+        databaseDelegate.addNewWord(word);
+    }
+
+    public void uploadCurrentAasBDictionary() {
+        for (Map.Entry<String, String> e : convertedWords.entrySet()){
+            databaseDelegate.addNewAasB(e.getKey(), e.getValue());
+        }
+        System.out.println("Current converted words uploaded successfully!");
+        convertedWords.clear();
     }
 
 
@@ -92,9 +116,10 @@ public class StringBlockOperator {
      */
     private List<String> parseLongStringIntoList(String string) {
         String s1 = string
-                .replaceAll("'s", " ").
-                replaceAll("'", "QQQQ").
-                replaceAll("\\p{Punct}", " ");
+                .replaceAll("'s", " ")
+                .replaceAll("'", "QQQQ")
+                .replaceAll("\\p{Punct}", " ")
+                .replaceAll("[0-9]", "");
         List<String> stringList = Arrays.asList(s1.split(" "));
         List<String> returnedList = splitCamelCaseWords(stringList);
         return returnedList;
@@ -109,7 +134,7 @@ public class StringBlockOperator {
             else{
                 returnedList.add(e.substring(0, upperCaseLocation(e).get(0)).toLowerCase());
                 for (int i = 1; i < upperCaseLocation(e).size(); i++){
-                    returnedList.add(e.substring(upperCaseLocation(e).get(i-1), upperCaseLocation(e).get(i)-1));
+                    returnedList.add(e.substring(upperCaseLocation(e).get(i-1), upperCaseLocation(e).get(i)-1).toLowerCase());
                 }
                 returnedList.add(e.substring(upperCaseLocation(e).get(upperCaseLocation(e).size()-1)).toLowerCase());
             }
@@ -160,67 +185,67 @@ public class StringBlockOperator {
             }
             if (e.endsWith("ies")) {
                 String ed = e.substring(0, e.length() - 3) + "y";
-                if (dictionaries.hasSaved(e) || searchOnWeb(ed)) {
-                    convertedWords.put(e, ed);
+                if (dictionaries.hasSaved(ed) || searchOnWeb(ed)) {
+                    convertedWordsPut(e, ed);
                     continue;
                 }
             }
             if (e.endsWith("ves")) {
                 String ed = e.substring(0, e.length() - 3) + "f";
-                if (dictionaries.hasSaved(e) || searchOnWeb(ed)) {
-                    convertedWords.put(e, ed);
+                if (dictionaries.hasSaved(ed) || searchOnWeb(ed)) {
+                    convertedWordsPut(e, ed);
                     continue;
                 }
             }
             if (e.endsWith("es")) {
                 String ed = e.substring(0, e.length() - 2);
-                if (dictionaries.hasSaved(e) || searchOnWeb(ed)) {
-                    convertedWords.put(e, ed);
+                if (dictionaries.hasSaved(ed) || searchOnWeb(ed)) {
+                    convertedWordsPut(e, ed);
                     continue;
                 }
             }
             if (e.endsWith("s")) {
                 String ed = e.substring(0, e.length() - 1);
-                if (dictionaries.hasSaved(e) || searchOnWeb(ed)) {
-                    convertedWords.put(e, ed);
+                if (dictionaries.hasSaved(ed) || searchOnWeb(ed)) {
+                    convertedWordsPut(e, ed);
                     continue;
                 }
             }
             if (e.endsWith("ying")) {
                 String ed = e.substring(0, e.length() - 4) + "e";
-                if (dictionaries.hasSaved(e) || searchOnWeb(ed)) {
-                    convertedWords.put(e, ed);
+                if (dictionaries.hasSaved(ed) || searchOnWeb(ed)) {
+                    convertedWordsPut(e, ed);
                     continue;
                 }
             }
             if (e.endsWith("ing")) {
                 String ed = e.substring(0, e.length() - 3);
-                if (dictionaries.hasSaved(e) || searchOnWeb(ed)) {
-                    convertedWords.put(e, ed);
+                if (dictionaries.hasSaved(ed) || searchOnWeb(ed)) {
+                    convertedWordsPut(e, ed);
                     continue;
                 } else {
-                    if (dictionaries.hasSaved(e) || searchOnWeb(ed.substring(0, ed.length() - 1) + "e")) {
-                        convertedWords.put(e, ed);
+                    if (dictionaries.hasSaved(ed) || searchOnWeb(ed.substring(0, ed.length() - 1) + "e")) {
+                        convertedWordsPut(e, ed);
                         continue;
                     }
                 }
             }
             if (e.endsWith("ied")) {
                 String ed = e.substring(0, e.length() - 3) + "y";
-                if (dictionaries.hasSaved(e) || searchOnWeb(ed)) {
-                    convertedWords.put(e, ed);
+                if (dictionaries.hasSaved(ed) || searchOnWeb(ed)) {
+                    convertedWordsPut(e, ed);
                     continue;
                 }
             }
             if (e.endsWith("ed")) {
                 String ed = e.substring(0, e.length() - 2);
-                if (dictionaries.hasSaved(e) || searchOnWeb(ed)) {
-                    convertedWords.put(e, ed);
+                if (dictionaries.hasSaved(ed) || searchOnWeb(ed)) {
+                    convertedWordsPut(e, ed);
                     continue;
                 } else {
                     ed = ed + "e";
-                    if (dictionaries.hasSaved(e) || searchOnWeb(ed)) {
-                        convertedWords.put(e, ed);
+                    if (dictionaries.hasSaved(ed) || searchOnWeb(ed)) {
+                        convertedWordsPut(e, ed);
                         continue;
                     }
                 }
@@ -273,8 +298,9 @@ public class StringBlockOperator {
                 System.out.println("Treat { " + word + " } as? enter correct word");
                 String yn = scanner.nextLine();
                 confirmAnAasBPair(scanner, word, yn);
-
+                continue;
             }
+            System.out.println("Wrong word entering: " + word);
         }
 
 
@@ -294,30 +320,13 @@ public class StringBlockOperator {
         confirmAnAasBPair(scanner, word, confirmPair);
     }
 
-    private void correctPairs(Scanner scanner, Map.Entry<String, String> entry, String input) throws SQLException, ClassNotFoundException {
-        System.out.println("Treat " + entry.getKey() + " as " + input + " ? y / d(discard and ignore this word) / correct word");
-        String input2 = scanner.nextLine().toLowerCase().replaceAll(" ", "");
-        if (input2.equals("")){
-            sqlOperator.addNewAasB(entry.getKey(), input);
-            uploadWord(input);
-            convertedWords.remove(entry.getKey());
-            return;
-        }
-        if(input2.equals("d")){
-            convertedWords.remove(entry.getKey());
-            sqlOperator.uploadNewIgnoredWord(entry.getKey());
-            return;
-        }
-        correctPairs(scanner, entry, input2);
-    }
-
     public void checkUnknownWords(Scanner scanner) throws SQLException, ClassNotFoundException {
         for(String unknownWord : finalUnknownWords){
             System.out.println("Treat " + unknownWord + " as?  input word or / d (discard and ignore this word)");
             String input = scanner.nextLine().toLowerCase().replaceAll(" ", "");
             if (input.equals("d")) {
                 toRemove.add(unknownWord);
-                sqlOperator.uploadNewIgnoredWord(unknownWord);
+                databaseDelegate.uploadNewIgnoredWord(unknownWord);
                 continue;
             }
             correctUnknownWord(scanner, unknownWord, input );
@@ -337,11 +346,11 @@ public class StringBlockOperator {
         String input2 = scanner.nextLine();
         if (input2.equals("d")) {
             toRemove.add(unknownWord);
-            sqlOperator.uploadNewIgnoredWord(unknownWord);
+            databaseDelegate.uploadNewIgnoredWord(unknownWord);
             return;
         }
         if ((input2.equals(""))) {
-            sqlOperator.addNewAasB(unknownWord, input);
+            databaseDelegate.addNewAasB(unknownWord, input);
             uploadWord(input);
             toRemove.add(unknownWord);
             return;
@@ -349,28 +358,11 @@ public class StringBlockOperator {
         correctUnknownWord(scanner, unknownWord, input2);
     }
 
-    public void bunchIgnore(Scanner scanner, int[] indexes) {
-        System.out.println("Are you sure to ignore below word(s)? y/ or anything others to cancel");
-        for (int e : indexes) {
-            System.out.print(e + ". ");
-            System.out.println(foundWords.get(e));
+    private void convertedWordsPut(String key, String value) {
+        if (convertedWords.containsKey(key)) {
+            return;
         }
-        String input = scanner.nextLine();
-        if(input.equals("")){
-            List<String> toRemove = new ArrayList<>();
-            for (int e : indexes) {
-                sqlOperator.uploadNewIgnoredWord(foundWords.get(e));
-                toRemove.add(foundWords.get(e));
-            }
-            foundWords.removeAll(toRemove);
-        }
+        convertedWords.put(key, value);
     }
 
-    public void uploadCurrentAasBDictionary() {
-        for (Map.Entry<String, String> e : convertedWords.entrySet()){
-            sqlOperator.addNewAasB(e.getKey(), e.getValue());
-        }
-        System.out.println("Current converted words uploaded successfully!");
-        convertedWords.clear();
-    }
 }

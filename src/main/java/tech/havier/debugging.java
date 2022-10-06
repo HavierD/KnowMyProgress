@@ -1,8 +1,10 @@
 package tech.havier;
 
+import tech.havier.timeToolkit.HavierTimer;
+
 public class debugging {
     public static void main(String[] args) {
-        UniqueTimer timer = new UniqueTimer();
+        HavierTimer timer = new HavierTimer();
         //
     }
 }

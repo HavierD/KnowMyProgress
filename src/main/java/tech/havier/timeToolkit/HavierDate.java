@@ -1,9 +1,9 @@
-package tech.havier;
+package tech.havier.timeToolkit;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class Date {
+public class HavierDate {
 
     private static String currentDate;
     private String currentMonth;
@@ -16,7 +16,7 @@ public class Date {
         System.out.println(currentDate);
     }
 
-    public Date() {
+    public HavierDate() {
         DateTimeFormatter date = DateTimeFormatter.ofPattern("dd");
         DateTimeFormatter month = DateTimeFormatter.ofPattern("MM");
         DateTimeFormatter year = DateTimeFormatter.ofPattern("yyyy");

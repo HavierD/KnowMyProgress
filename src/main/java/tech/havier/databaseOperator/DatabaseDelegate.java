@@ -8,7 +8,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class SqlOperator {
+public class DatabaseDelegate {
+
+    private DatabaseType databaseType = DatabaseType.ORACLE_SQL;
 
     private static final ConfigHavi1 config = new ConfigHavi1();
 
@@ -17,26 +19,14 @@ public class SqlOperator {
     private final List<String> ignoreDictionary = new ArrayList<>();
     private static HavierDate date = new HavierDate();
 
-
     HavierTimer timer = new HavierTimer();
 
-
-
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
-
-    }
-
-
-
-
-    public SqlOperator() throws Exception {
+    public DatabaseDelegate() throws Exception {
         initializeTransitionDictionaryFromSql();
         initializeWordDictionaryFromSql();
         initializeIgnoreDictionaryFromSql();
         date = new HavierDate();
     }
-
-
 
     public HashMap<String, String> getTransitionDictionary() {
         return transitionDictionary;

@@ -1,15 +1,15 @@
 package tech.havier;
 
 
+import tech.havier.stringBlockDelegate.StringBlockImporter;
 import tech.havier.stringBlockDelegate.TxtFileClearer;
 import tech.havier.stringBlockOperator.StringBlockOperator;
-import tech.havier.stringBlockDelegate.StringBlockImporter;
+import tech.havier.timeToolkit.HavierTimer;
 
 import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Main {
-
 
     public static void main(String[] args) throws Exception {
         System.out.println("Welcome to Know Your Progress!");
@@ -43,13 +43,12 @@ public class Main {
     private static void retrieveWords() throws Exception {
 
 
-        UniqueTimer timer = new UniqueTimer();
+        HavierTimer timer = new HavierTimer();
         timer.start(5);
         System.out.println("Importing ... ");
         System.out.println("Time may be long. Please be patient... ");
         StringBlockOperator stringBlockOperator = new StringBlockOperator(new StringBlockImporter());
         System.out.println("Imported successfully!");
-        System.out.println("Time used: " + timer.getCurrentTimer());
         System.out.println();
         timer.cancel();
 
@@ -135,9 +134,6 @@ public class Main {
                 showMenu2(stringBlockOperator);
         }
     }
-
-
-
     private static int[] parseIndexes(String string) {
         String[] indexes = string.split(" ");
         int[] intIndexes =new int[indexes.length];
@@ -154,6 +150,5 @@ public class Main {
     private static void uploadFoundWords(StringBlockOperator stringBlockOperator) throws SQLException, ClassNotFoundException {
         stringBlockOperator.uploadWords();
     }
-
 
 }

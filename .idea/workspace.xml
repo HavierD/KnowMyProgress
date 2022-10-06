@@ -4,17 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ac61b3e-de78-49fe-a11d-7c28c43356ca" name="Changes" comment="developing...">
-      <change afterPath="$PROJECT_DIR$/src/main/java/tech/havier/Date.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tech/havier/Dictionaries.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tech/havier/stringBlockDelegate/TxtFileClearer.java" afterDir="false" />
+    <list default="true" id="1ac61b3e-de78-49fe-a11d-7c28c43356ca" name="Changes" comment="version 0.1">
+      <change afterPath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/DatabaseDelegate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/DatabaseType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/Date.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/timeToolkit/HavierDate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/Dictionaries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/Dictionaries.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/databaseOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/SqlOperator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/UniqueTimer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/timeToolkit/HavierTimer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/WordElement.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/SqlOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/SqlOperator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/debugging.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/debugging.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/stringBlockOperator/StringBlockOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/stringBlockOperator/StringBlockOperator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/userInterface/StringBlockImporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/stringBlockDelegate/StringBlockImporter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/wordElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/WordElement.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +26,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -72,14 +74,31 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Projects\JavaProjects\_002KnowYourProgress\src" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="tech.havier.databaseOperator" />
+      <recent name="tech.havier" />
+    </key>
   </component>
   <component name="RunManager" selected="Application.Main">
-    <configuration name="Date" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="tech.havier.Date" />
+    <configuration name="DatabaseDelegate" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="tech.havier.databaseOperator.DatabaseDelegate" />
       <module name="_002KnowYourProgress" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="tech.havier.*" />
+          <option name="PATTERN" value="tech.havier.databaseOperator.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HavierDate" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="tech.havier.timeToolkit.HavierDate" />
+      <module name="_002KnowYourProgress" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tech.havier.timeToolkit.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -92,20 +111,7 @@
       <module name="_002KnowYourProgress" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="tech.havier.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SqlOperator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="tech.havier.databaseOperator.SqlOperator" />
-      <module name="_002KnowYourProgress" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="tech.havier.databaseOperator.*" />
+          <option name="PATTERN" value="tech.havier.timeToolkit.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -143,8 +149,8 @@
       <list>
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.TxtFileClearer" />
-        <item itemvalue="Application.SqlOperator" />
-        <item itemvalue="Application.Date" />
+        <item itemvalue="Application.DatabaseDelegate" />
+        <item itemvalue="Application.HavierDate" />
         <item itemvalue="Application.StringBlockOperator" />
       </list>
     </recent_temporary>
@@ -159,7 +165,8 @@
       <updated>1664324949399</updated>
       <workItem from="1664324950777" duration="53760000" />
       <workItem from="1664601236520" duration="21582000" />
-      <workItem from="1664920277608" duration="20025000" />
+      <workItem from="1664920277608" duration="20892000" />
+      <workItem from="1664945751300" duration="12188000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1664749116289</created>
@@ -231,7 +238,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664754816055</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="version 0.1">
+      <created>1664944942471</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1664944942471</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -251,6 +265,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first commit" />
     <MESSAGE value="developing..." />
-    <option name="LAST_COMMIT_MESSAGE" value="developing..." />
+    <MESSAGE value="version 0.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="version 0.1" />
   </component>
 </project>

@@ -1,20 +1,22 @@
 package tech.havier;
 
-import tech.havier.databaseOperator.SqlOperator;
+import tech.havier.databaseOperator.DatabaseDelegate;
 
 import java.util.HashMap;
 import java.util.List;
 
 public class Dictionaries {
-    private HashMap<String, String> wordTransitionDictionary;
-    private List<String> wordDictionary;
-    private List<String> ignoreDictionary;
+
+    private final HashMap<String, String> wordTransitionDictionary;
+    private final List<String> wordDictionary;
+    private final List<String> ignoreDictionary;
+
 
     public Dictionaries() throws Exception {
-        SqlOperator sqlOperator = new SqlOperator();
-        this.wordTransitionDictionary = sqlOperator.getTransitionDictionary();
-        this.wordDictionary = sqlOperator.getWordDictionary();
-        this.ignoreDictionary = sqlOperator.getIgnoreDictionary();
+        DatabaseDelegate databaseDelegate = new DatabaseDelegate();
+        this.wordTransitionDictionary = databaseDelegate.getTransitionDictionary();
+        this.wordDictionary = databaseDelegate.getWordDictionary();
+        this.ignoreDictionary = databaseDelegate.getIgnoreDictionary();
     }
 
     public String transitions(String rawWord) {
@@ -35,12 +37,6 @@ public class Dictionaries {
         return false;
     }
 
-    private String formatWord(String rawWord) {
-        rawWord = rawWord.toLowerCase();
-        rawWord = rawWord.replaceAll(" ","");
-        return rawWord;
-    }
-
     public boolean doesIgnore(String word) {
         word = formatWord(word);
         if(ignoreDictionary.contains(word)){
@@ -48,4 +44,13 @@ public class Dictionaries {
         }
         return false;
     }
+
+
+    private String formatWord(String rawWord) {
+        rawWord = rawWord.toLowerCase();
+        rawWord = rawWord.replaceAll(" ","");
+        return rawWord;
+    }
+
+
 }
