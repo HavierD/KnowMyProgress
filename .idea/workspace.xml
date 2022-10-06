@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ac61b3e-de78-49fe-a11d-7c28c43356ca" name="Changes" comment="version 0.11 developing. Add database delegate.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/tech/havier/GlobalStateManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/DatabaseOperator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/raw5000list.txt" beforeDir="false" afterPath="$PROJECT_DIR$/raw5000list.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/Dictionaries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/Dictionaries.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/DatabaseDelegate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/DatabaseFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/SqlOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/SqlOperator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/stringBlockDelegate/StringBlockImporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/stringBlockDelegate/StringBlockImporter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/stringBlockOperator/StringBlockOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/stringBlockOperator/StringBlockOperator.java" afterDir="false" />
-    </list>
+    <list default="true" id="1ac61b3e-de78-49fe-a11d-7c28c43356ca" name="Changes" comment="version 0.11 developing. Bugs fixed." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -168,7 +157,7 @@
       <workItem from="1664324950777" duration="53760000" />
       <workItem from="1664601236520" duration="21582000" />
       <workItem from="1664920277608" duration="20892000" />
-      <workItem from="1664945751300" duration="20127000" />
+      <workItem from="1664945751300" duration="20755000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1664749116289</created>
@@ -254,7 +243,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665015954680</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="version 0.11 developing. Bugs fixed.">
+      <created>1665027958198</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1665027958198</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -276,6 +272,7 @@
     <MESSAGE value="developing..." />
     <MESSAGE value="version 0.1" />
     <MESSAGE value="version 0.11 developing. Add database delegate." />
-    <option name="LAST_COMMIT_MESSAGE" value="version 0.11 developing. Add database delegate." />
+    <MESSAGE value="version 0.11 developing. Bugs fixed." />
+    <option name="LAST_COMMIT_MESSAGE" value="version 0.11 developing. Bugs fixed." />
   </component>
 </project>
