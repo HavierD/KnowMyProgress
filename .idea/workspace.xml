@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ac61b3e-de78-49fe-a11d-7c28c43356ca" name="Changes" comment="version 0.11 developing. Bugs fixed." />
+    <list default="true" id="1ac61b3e-de78-49fe-a11d-7c28c43356ca" name="Changes" comment="version 0.11 developing. Bugs fixed.">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/sql/SqlOperations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/DatabaseFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/DatabaseFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/SqlOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/sql/SqlOperator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/debugging.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/debugging.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,7 +57,7 @@
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "actions.on.save"
+    "settings.editor.selected.configurable": "editing.templates"
   },
   "keyToStringList": {
     "DatabaseDriversLRU": [
@@ -70,26 +77,13 @@
       <recent name="tech.havier" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.SqlOperations">
     <configuration name="DatabaseFactory" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="tech.havier.databaseOperator.DatabaseFactory" />
       <module name="_002KnowYourProgress" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="tech.havier.databaseOperator.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="HavierDate" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="tech.havier.timeToolkit.HavierDate" />
-      <module name="_002KnowYourProgress" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="tech.havier.timeToolkit.*" />
+          <option name="PATTERN" value="tech.havier.databaseOperator.sql.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -110,12 +104,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StringBlockOperator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="tech.havier.stringBlockOperator.StringBlockOperator" />
+    <configuration name="SqlOperations" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="tech.havier.databaseOperator.sql.SqlOperations" />
       <module name="_002KnowYourProgress" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="tech.havier.stringBlockOperator.*" />
+          <option name="PATTERN" value="tech.havier.databaseOperator.sql.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -136,13 +130,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="debugging" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="tech.havier.debugging" />
+      <module name="_002KnowYourProgress" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tech.havier.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.SqlOperations" />
+        <item itemvalue="Application.debugging" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.TxtFileClearer" />
         <item itemvalue="Application.DatabaseFactory" />
-        <item itemvalue="Application.HavierDate" />
-        <item itemvalue="Application.StringBlockOperator" />
       </list>
     </recent_temporary>
   </component>
@@ -157,7 +164,7 @@
       <workItem from="1664324950777" duration="53760000" />
       <workItem from="1664601236520" duration="21582000" />
       <workItem from="1664920277608" duration="20892000" />
-      <workItem from="1664945751300" duration="20755000" />
+      <workItem from="1664945751300" duration="27000000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1664749116289</created>
@@ -250,7 +257,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665027958198</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="version 0.11 developing. Bugs fixed.">
+      <created>1665028798179</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1665028798179</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

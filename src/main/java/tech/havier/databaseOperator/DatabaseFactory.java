@@ -1,5 +1,7 @@
 package tech.havier.databaseOperator;
 
+import tech.havier.databaseOperator.sql.SqlOperator;
+
 public class DatabaseFactory {
 
     private DatabaseType databaseType = DatabaseType.ORACLE_SQL;

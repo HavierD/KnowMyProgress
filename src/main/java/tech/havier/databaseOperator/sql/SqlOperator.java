@@ -1,6 +1,7 @@
-package tech.havier.databaseOperator;
+package tech.havier.databaseOperator.sql;
 
-import tech.havier.GlobalStateManager;
+import tech.havier.databaseOperator.ConfigHavi1;
+import tech.havier.databaseOperator.DatabaseOperator;
 import tech.havier.stringBlockDelegate.StringBlockImporter;
 import tech.havier.timeToolkit.HavierDate;
 import tech.havier.timeToolkit.HavierTimer;
