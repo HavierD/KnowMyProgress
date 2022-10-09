@@ -71,7 +71,7 @@ public class SqlOperator implements DatabaseOperator {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             Connection connection = getConnection();
             Statement statement = connection.createStatement();
-            statement.executeUpdate("insert into ignore_dictionary  values (' " + word + " ')");
+            statement.executeUpdate("insert into ignore_dictionary  values ('" + word + "')");
 
         } catch (Exception e) {
             throw new RuntimeException(e);

@@ -1,6 +1,7 @@
 package tech.havier.databaseOperator.sql;
 
 import tech.havier.databaseOperator.ConfigHavi1;
+import tech.havier.timeToolkit.HavierTimer;
 
 import java.sql.*;
 import java.util.List;
@@ -17,8 +18,10 @@ public class SqlOperations {
      * @throws Exception
      */
     private static void sql() throws Exception {
+        HavierTimer timer = new HavierTimer();
 
         List<String> dictionaries = SqlOperator.getSqlOperatorInstance().getWordDictionary();
+        timer.start(0);
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
 
@@ -35,7 +38,7 @@ public class SqlOperations {
                 statement2.executeUpdate("update words_list set repetition=" + repetition + " where word='"+e+"'");
                 connection.close();
             }
-
+            timer.cancel("SQL repetitions updating");
 
         } catch (Exception e) {
             throw new RuntimeException(e);

@@ -69,7 +69,12 @@ public class StringBlockOperator {
 
     public void uploadWords() throws SQLException, ClassNotFoundException {
         timer.start(0);
+        int index = 0;
         for (String e : foundWords) {
+            index++;
+            if (index % 20 == 0) {
+                System.out.println("uploading " + index + " / " + foundWords.size());
+            }
             if (dictionaries.hasSaved(e)) {
                 databaseOperator.updateWord(e);
                 continue;
@@ -125,7 +130,6 @@ public class StringBlockOperator {
     private List<String> parseLongStringIntoList(String string) {
         String s1 = string
                 .replaceAll("'s", " ")
-                .replaceAll("'", "QQQQ")
                 .replaceAll("\\p{Punct}", " ")
                 .replaceAll("[0-9]", "");
         List<String> stringList = Arrays.asList(s1.split(" "));
@@ -179,14 +183,24 @@ public class StringBlockOperator {
 
 
     private void validateWords(List<String> wordsCheckedAasB) throws IOException {
-        for (String e : wordsCheckedAasB) {
 
+        int progress = 0;
+        for (String e : wordsCheckedAasB) {
+            progress++;
+            if (progress % 20 == 0) {
+                System.out.println("validating progress: " + progress + " / " + wordsCheckedAasB.size());
+            }
             if(dictionaries.doesIgnore(e)){
-                ignoredWords.add(e);
                 continue;
             }
 
-            if (dictionaries.hasSaved(e) || searchOnWeb(e)) {
+            if(dictionaries.hasSaved(e)){
+                if(foundWords.contains(e)) continue;
+                foundWordsAdd(e);
+                continue;
+            }
+
+            if (searchOnWeb(e)) {
                 if(foundWords.contains(e)) continue;
                 foundWordsAdd(e);
                 continue;
@@ -258,6 +272,9 @@ public class StringBlockOperator {
                     }
                 }
             }
+            if(finalUnknownWords.contains(e)){
+                continue;
+            }
             finalUnknownWords.add(e);
         }
     }
@@ -287,9 +304,6 @@ public class StringBlockOperator {
      * @return
      */
     private static List<Integer> upperCaseLocation(String word) {
-        if(word.contains("QQQQ")){
-            return null;
-        }
 
         List<Integer> allUpperCaseLocations = new ArrayList<>();
         for( int i = 1; i < word.length()-1; i++){
@@ -321,6 +335,7 @@ public class StringBlockOperator {
                 continue;
             }
             System.out.println("Wrong word entering: " + word);
+            checkConvertedWords(scanner, correctingWords);
         }
 
 
@@ -342,7 +357,7 @@ public class StringBlockOperator {
 
     public void checkUnknownWords(Scanner scanner) throws SQLException, ClassNotFoundException {
         for(String unknownWord : finalUnknownWords){
-            System.out.println("Treat " + unknownWord + " as?  input word or / d (discard and ignore this word)");
+            System.out.println("Treat {" + unknownWord + "} as?  input word or / d (discard and ignore this word)");
             String input = scanner.nextLine().toLowerCase().replaceAll(" ", "");
             if (input.equals("d")) {
                 toRemove.add(unknownWord);
@@ -362,7 +377,7 @@ public class StringBlockOperator {
     }
 
     private void correctUnknownWord(Scanner scanner, String unknownWord, String input ) throws SQLException, ClassNotFoundException {
-        System.out.println("Treat " + unknownWord + " as " + input + " ? y or / input new word or / d(discard and ignore this word)" );
+        System.out.println("Treat {" + unknownWord + "} as {" + input + "} ? y or / input new word or / d(discard and ignore this word)" );
         String input2 = scanner.nextLine();
         if (input2.equals("d")) {
             toRemove.add(unknownWord);

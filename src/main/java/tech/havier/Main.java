@@ -61,16 +61,11 @@ public class Main {
         int total = stringBlockOperator.needCheckWordsNumber() + stringBlockOperator.savedWordsNumber() + stringBlockOperator.unknownWordsNumber();
         if (total == 0) {
             System.out.println("No words needed to operation!");
-            System.out.println("do you want to clear importing txt file? y/n");
-            String yn = scanner.nextLine().toLowerCase().replaceAll(" ", "");
-            if (yn.equals("")) {
-                System.out.println("clearing...");
-                TxtFileClearer.txtFileClearer();
-                System.out.println("importing txt file clear successfully!");
-            }
+            clearTxtConfirmation(scanner);
             System.out.println("Enter anything back to main menu.");
             scanner.nextLine();
             showMenu1();
+
         }
 
         System.out.println("Found words: " + stringBlockOperator.savedWordsNumber());
@@ -112,6 +107,7 @@ public class Main {
                 System.out.println("Do you want to confirm all the transitions? y/ or enter word(s) to correct");
                 String transConfirm = scanner.nextLine();
                 if(transConfirm.equals("")){
+                    System.out.println("uploading... ");
                     stringBlockOperator.uploadCurrentAasBDictionary();
                 }else{
                     String[] correctingWords = transConfirm.split(" ");
@@ -133,6 +129,22 @@ public class Main {
                 showMenu2(stringBlockOperator);
         }
     }
+
+    private static void clearTxtConfirmation(Scanner scanner) {
+        System.out.println("do you want to clear importing txt file? y/n");
+        String yn = scanner.nextLine().toLowerCase().replaceAll(" ", "");
+        if (yn.equals("")) {
+            System.out.println("clearing...");
+            TxtFileClearer.txtFileClearer();
+            System.out.println("importing txt file clear successfully!");
+        } else if (yn.equals("n")) {
+
+        }else {
+            System.out.println("unknown type in!");
+            clearTxtConfirmation(scanner);
+        }
+    }
+
     private static int[] parseIndexes(String string) {
         String[] indexes = string.split(" ");
         int[] intIndexes =new int[indexes.length];

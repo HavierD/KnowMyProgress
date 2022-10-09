@@ -9,12 +9,7 @@ public class HavierDate {
     private String currentMonth;
     private String currentYear;
 
-    public static void main(String[] args) {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd");
-        LocalDateTime now = LocalDateTime.now();
-        currentDate = dtf.format(now);
-        System.out.println(currentDate);
-    }
+
 
     public HavierDate() {
         DateTimeFormatter date = DateTimeFormatter.ofPattern("dd");

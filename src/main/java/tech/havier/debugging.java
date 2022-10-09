@@ -4,16 +4,22 @@ import tech.havier.databaseOperator.ConfigHavi1;
 import tech.havier.timeToolkit.HavierTimer;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class debugging {
 
     static ConfigHavi1 config = new ConfigHavi1();
 
     public static void main(String[] args) throws Exception {
-        testNoIndexPerformance();
-        testIndexPerformance();
+//        testNoIndexPerformance();
+//        testIndexPerformance();
+
 
     }
+
+
+
 
     private static void testIndexPerformance() throws Exception {
         HavierTimer timer = new HavierTimer();

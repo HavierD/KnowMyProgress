@@ -13,15 +13,15 @@ public class HavierTimer {
 
     /**
      * output time using every "gap" seconds
-     * @param reportPunctuallyGap
+     * @param reportIntervals
      */
-    public void start(int reportPunctuallyGap) {
+    public void start(int reportIntervals) {
         if(isThreadLocked){
             throw new RuntimeException("This timer is timing. A HavierTimer instance must be one thread.");
         }
         isThreadLocked = true;
         timer = new Timer();
-        timer.schedule(timerTask(reportPunctuallyGap), 0, 100);
+        timer.schedule(timerTask(reportIntervals), 0, 100);
     }
 
     private TimerTask timerTask(int reportPunctuallyGap) {
