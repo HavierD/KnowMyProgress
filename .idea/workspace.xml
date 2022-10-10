@@ -4,29 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ac61b3e-de78-49fe-a11d-7c28c43356ca" name="Changes" comment="version 0.11 developing. Bugs fixed.">
-      <change afterPath="$PROJECT_DIR$/lib/FastInfoset-1.2.15.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/antlr-2.7.7.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/byte-buddy-1.10.7.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/classmate-1.5.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/dom4j-2.1.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/hibernate-commons-annotations-5.1.0.Final.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/hibernate-core-5.4.11.Final.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/istack-commons-runtime-3.0.7.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/jandex-2.1.1.Final.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/javassist-3.24.0-GA.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/javax.activation-api-1.2.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/javax.persistence-api-2.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/jaxb-api-2.3.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/jaxb-runtime-2.3.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/jboss-logging-3.3.2.Final.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/jboss-transaction-api_1.2_spec-1.1.1.Final.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/stax-ex-1.8.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/txw2-2.3.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    <list default="true" id="1ac61b3e-de78-49fe-a11d-7c28c43356ca" name="Changes" comment="version 0.12 developing. adding hibernate">
+      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,7 +164,7 @@
       <workItem from="1665094103914" duration="1503000" />
       <workItem from="1665098078124" duration="471000" />
       <workItem from="1665098557462" duration="4884000" />
-      <workItem from="1665111731460" duration="14276000" />
+      <workItem from="1665111731460" duration="14397000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1664749116289</created>
@@ -313,7 +292,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665361522275</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="version 0.12 developing. adding hibernate">
+      <created>1665364834836</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1665364834836</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -337,6 +323,7 @@
     <MESSAGE value="version 0.1" />
     <MESSAGE value="version 0.11 developing. Add database delegate." />
     <MESSAGE value="version 0.11 developing. Bugs fixed." />
-    <option name="LAST_COMMIT_MESSAGE" value="version 0.11 developing. Bugs fixed." />
+    <MESSAGE value="version 0.12 developing. adding hibernate" />
+    <option name="LAST_COMMIT_MESSAGE" value="version 0.12 developing. adding hibernate" />
   </component>
 </project>
