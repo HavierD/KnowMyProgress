@@ -8,6 +8,7 @@ src/main/java/teck/havier/databaseOperator/configHavi3.java
 rawString.txt
 **/configHavi1.java
 *.cfg.xml
+src/main/resources/hibernate.cfg.xml
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
