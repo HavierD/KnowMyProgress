@@ -1,7 +1,5 @@
 package tech.havier.stringBlockDelegate;
 
-import tech.havier.GlobalStateManager;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -30,7 +28,6 @@ public class StringBlockImporter {
 
     private String importStringBlock() {
 
-        GlobalStateManager.getInstance().importedTxt();
         StringBuilder stringBuilder = new StringBuilder();
         try{
             File file = new File("rawString.txt");

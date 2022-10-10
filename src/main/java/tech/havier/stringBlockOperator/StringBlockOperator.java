@@ -72,7 +72,7 @@ public class StringBlockOperator {
         int index = 0;
         for (String e : foundWords) {
             index++;
-            if (index % 20 == 0) {
+            if (index % 100 == 0) {
                 System.out.println("uploading " + index + " / " + foundWords.size());
             }
             if (dictionaries.hasSaved(e)) {
@@ -187,7 +187,7 @@ public class StringBlockOperator {
         int progress = 0;
         for (String e : wordsCheckedAasB) {
             progress++;
-            if (progress % 20 == 0) {
+            if (progress % 100 == 0) {
                 System.out.println("validating progress: " + progress + " / " + wordsCheckedAasB.size());
             }
             if(dictionaries.doesIgnore(e)){
@@ -321,7 +321,7 @@ public class StringBlockOperator {
     }
 
 
-    public void checkConvertedWords(Scanner scanner, String[] correctingWords) throws SQLException, ClassNotFoundException {
+    public void checkConvertedWords(Scanner scanner, String[] correctingWords){
 
         for (String word : correctingWords) {
             if (convertedWords.containsKey(word)) {
@@ -334,8 +334,7 @@ public class StringBlockOperator {
                 confirmAnAasBPair(scanner, word, yn);
                 continue;
             }
-            System.out.println("Wrong word entering: " + word);
-            checkConvertedWords(scanner, correctingWords);
+            throw new RuntimeException("wrong entered word\"" + word + "\"");
         }
 
 

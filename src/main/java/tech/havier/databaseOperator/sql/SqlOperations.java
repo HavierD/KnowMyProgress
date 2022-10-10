@@ -10,14 +10,14 @@ public class SqlOperations {
 
     private static ConfigHavi1 config = new ConfigHavi1();
     public static void main(String[] args) throws Exception {
-        sql();
+        updateRepetitions();
     }
 
     /**
      * update repetitions of words in the word list.
      * @throws Exception
      */
-    private static void sql() throws Exception {
+    private static void updateRepetitions() throws Exception {
         HavierTimer timer = new HavierTimer();
 
         List<String> dictionaries = SqlOperator.getSqlOperatorInstance().getWordDictionary();
@@ -44,6 +44,5 @@ public class SqlOperations {
             throw new RuntimeException(e);
         }
     }
-
 
 }
