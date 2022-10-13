@@ -4,6 +4,7 @@ package tech.havier;
 import tech.havier.stringBlockDelegate.StringBlockImporter;
 import tech.havier.stringBlockDelegate.TxtFileClearer;
 import tech.havier.stringBlockOperator.StringBlockOperator;
+import tech.havier.stringBlockOperator.StringBlockOperatorFactory;
 import tech.havier.timeToolkit.HavierTimer;
 
 import java.util.Scanner;
@@ -46,7 +47,7 @@ public class Main {
         timer.start(5);
         System.out.println("Importing ... ");
         System.out.println("Time may be long. Please be patient... ");
-        StringBlockOperator stringBlockOperator = new StringBlockOperator(new StringBlockImporter());
+        StringBlockOperator stringBlockOperator = new StringBlockOperatorFactory().createStringBlockOperator(new StringBlockImporter());
         System.out.println("Imported successfully!");
         System.out.println();
         timer.cancel();

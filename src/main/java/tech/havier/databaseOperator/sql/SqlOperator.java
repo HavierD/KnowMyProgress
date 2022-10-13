@@ -24,6 +24,15 @@ public class SqlOperator implements DatabaseOperator {
 
     HavierTimer timer = new HavierTimer();
 
+
+    public static void main(String[] args) {
+        String word = "run";
+
+    }
+
+
+
+
     public static SqlOperator getSqlOperatorInstance() throws Exception {
         if (sqlOperator == null) {
             sqlOperator = new SqlOperator();
@@ -59,7 +68,7 @@ public class SqlOperator implements DatabaseOperator {
             Connection connection = getConnection();
             Statement statement = connection.createStatement();
             statement.executeUpdate("insert into a_as_b  values ('" + key + "','" + value + "')");
-            addNewRecord(value);
+            connection.close();
 
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -99,8 +108,14 @@ public class SqlOperator implements DatabaseOperator {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             Connection connection = getConnection();
             Statement statement = connection.createStatement();
-            statement.executeUpdate("insert into words_list (word, last_meet_time) values ('" + word  + "','" + date.getCurrentWholeDate() + "')");
-
+            String query = String.format("" +
+                    "merge into words_list dest " +
+                    "using (select '%1$s' word from dual) src " +
+                    "on (dest.word = src.word) " +
+                    "when matched then update set repetition = repetition + 1, last_meet_time = '%2$s' " +
+                    "when not matched then insert(word, repetition, last_meet_time) values (src.word, 1, '%2$s')", word, date.getCurrentWholeDate());
+            statement.executeUpdate(query);
+            connection.close();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -113,7 +128,7 @@ public class SqlOperator implements DatabaseOperator {
             Connection connection = getConnection();
             Statement statement = connection.createStatement();
             statement.executeUpdate("insert into words_reading_records  values ('" + word + "'," + date.getCurrentYear() + "," + date.getCurrentMonth() +"," +
-                    date.getCurrentDate()+ ")");
+                    date.getCurrentDate()+ ", seq_records.nextval)");
 
 
         } catch (Exception e) {
@@ -171,7 +186,7 @@ public class SqlOperator implements DatabaseOperator {
             throw new Exception(e);
         }
     }
-    private Connection getConnection() throws ClassNotFoundException, SQLException {
+    private static Connection getConnection() throws ClassNotFoundException, SQLException {
         Class.forName("oracle.jdbc.driver.OracleDriver");
         Connection connection = DriverManager.getConnection(
                 "jdbc:oracle:thin:@localhost:1521/XEPDB1",

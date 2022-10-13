@@ -11,6 +11,8 @@ public class Dictionaries {
     private final HashMap<String, String> wordTransitionDictionary;
     private final List<String> wordDictionary;
     private final List<String> ignoreDictionary;
+//    private final HashMap<String, String> suffixConvertDictionary = new HashMap<>();
+    private String[][] suffixConvertDictionary;
 
 
     public Dictionaries() throws Exception {
@@ -18,7 +20,10 @@ public class Dictionaries {
         this.wordTransitionDictionary = databaseOperator.getTransitionDictionary();
         this.wordDictionary = databaseOperator.getWordDictionary();
         this.ignoreDictionary = databaseOperator.getIgnoreDictionary();
+        initializeSuffixConvertDictionary();
+
     }
+
 
     public String transitions(String rawWord) {
         rawWord = formatWord(rawWord);
@@ -54,12 +59,32 @@ public class Dictionaries {
         return false;
     }
 
+    public String[][] getSuffixConvertDictionary() {
+        return suffixConvertDictionary;
+    }
 
     private String formatWord(String rawWord) {
         rawWord = rawWord.toLowerCase();
         rawWord = rawWord.replaceAll(" ","");
         return rawWord;
     }
+
+
+    private void initializeSuffixConvertDictionary() {
+
+        suffixConvertDictionary = new String[][]{
+                {"ies", "y"},
+                {"ves","f"},
+                {"es",""},
+                {"s",""},
+                {"ying","ie"},
+                {"ing", ""},
+                {"ed", ""},
+                {"ed", "e"},
+                {"ied", "y"}
+        };
+    }
+
 
 
 }

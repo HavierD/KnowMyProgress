@@ -10,6 +10,8 @@ public class DatabaseFactory {
         switch (databaseType) {
             case ORACLE_SQL:
                 return SqlOperator.getSqlOperatorInstance();
+            case HIBERNATE:
+                ;
             default:
                 throw new RuntimeException("Creating database operator failed: unknown database type: " + databaseType);
         }

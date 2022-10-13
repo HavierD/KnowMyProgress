@@ -5,9 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ac61b3e-de78-49fe-a11d-7c28c43356ca" name="Changes" comment="version 0.12 developing. adding hibernate">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backupForHibernate/a_as_b.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backupForHibernate/ignore.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backupForHibernate/reading_records.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backupForHibernate/wordList.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tech/havier/PerformanceMonitor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/hibernate/entities/AasB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/hibernate/entities/IgnoreDictionary.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/hibernate/entities/Test1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/hibernate/entities/WordReadingRecords.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/hibernate/entities/WordsList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/hibernate/hibernateOperator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tech/havier/stringBlockOperator/StringBlockOperator1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tech/havier/stringBlockOperator/StringBlockOperator2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tech/havier/stringBlockOperator/StringBlockOperatorFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/Dictionaries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/Dictionaries.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/DatabaseFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/DatabaseFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/DatabaseType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/DatabaseType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/sql/SqlOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/sql/SqlOperator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/debugging.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/debugging.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/stringBlockOperator/StringBlockOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/stringBlockOperator/StringBlockOperator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +73,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
+    "project.structure.side.proportion": "0.41494253",
     "settings.editor.selected.configurable": "preferences.keymap"
   },
   "keyToStringList": {
@@ -75,20 +94,7 @@
       <recent name="tech.havier" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
-    <configuration name="DatabaseFactory" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="tech.havier.databaseOperator.DatabaseFactory" />
-      <module name="_002KnowYourProgress" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="tech.havier.databaseOperator.sql.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.hibernateOperator">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="tech.havier.Main" />
       <module name="_002KnowYourProgress" />
@@ -115,12 +121,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TxtFileClearer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="tech.havier.stringBlockDelegate.TxtFileClearer" />
+    <configuration name="SqlOperator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="tech.havier.databaseOperator.sql.SqlOperator" />
       <module name="_002KnowYourProgress" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="tech.havier.stringBlockDelegate.*" />
+          <option name="PATTERN" value="tech.havier.databaseOperator.sql.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -141,13 +147,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="hibernateOperator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="tech.havier.databaseOperator.hibernate.hibernateOperator" />
+      <module name="_002KnowYourProgress" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tech.havier.databaseOperator.hibernate.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.hibernateOperator" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.SqlOperator" />
         <item itemvalue="Application.SqlOperations" />
         <item itemvalue="Application.debugging" />
-        <item itemvalue="Application.TxtFileClearer" />
-        <item itemvalue="Application.DatabaseFactory" />
       </list>
     </recent_temporary>
   </component>
@@ -166,7 +185,9 @@
       <workItem from="1665094103914" duration="1503000" />
       <workItem from="1665098078124" duration="471000" />
       <workItem from="1665098557462" duration="4884000" />
-      <workItem from="1665111731460" duration="15419000" />
+      <workItem from="1665111731460" duration="39476000" />
+      <workItem from="1665464657524" duration="227000" />
+      <workItem from="1665549339318" duration="17662000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1664749116289</created>
@@ -329,7 +350,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665365310577</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="version 0.12 developing. adding hibernate">
+      <created>1665366033507</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1665366033507</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class debugging {
 
@@ -18,9 +19,21 @@ public class debugging {
 //        testIndexPerformance();
 
 
+        List<Integer> intTest = new ArrayList<>();
+        intTest.add(2);
+        intTest.add(1);
+        intTest.add(5);
+        intTest.add(8);
+        intTest.add(1);
+        intTest.add(3);
+        intTest.add(9);
 
 
 
+        System.out.println(intTest);
+
+        intTest = intTest.stream().filter(a->a<5).collect(Collectors.toList());
+        System.out.println(intTest);
     }
 
 
