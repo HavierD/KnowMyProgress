@@ -4,28 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ac61b3e-de78-49fe-a11d-7c28c43356ca" name="Changes" comment="version 0.12 developing. adding hibernate">
-      <change afterPath="$PROJECT_DIR$/backupForHibernate/a_as_b.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backupForHibernate/ignore.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backupForHibernate/reading_records.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backupForHibernate/wordList.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tech/havier/PerformanceMonitor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/hibernate/entities/AasB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/hibernate/entities/IgnoreDictionary.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/hibernate/entities/Test1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/hibernate/entities/WordReadingRecords.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/hibernate/entities/WordsList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/hibernate/hibernateOperator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tech/havier/stringBlockOperator/StringBlockOperator1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tech/havier/stringBlockOperator/StringBlockOperator2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tech/havier/stringBlockOperator/StringBlockOperatorFactory.java" afterDir="false" />
+    <list default="true" id="1ac61b3e-de78-49fe-a11d-7c28c43356ca" name="Changes" comment="version 0.13 developing. adding new version of StringBlockOperator.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/Dictionaries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/Dictionaries.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/DatabaseFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/DatabaseFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/DatabaseType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/DatabaseType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/sql/SqlOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/sql/SqlOperator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/debugging.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/debugging.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/stringBlockOperator/StringBlockOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/stringBlockOperator/StringBlockOperator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,31 +37,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/Projects/JavaProjects/_002KnowYourProgress",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.41494253",
-    "settings.editor.selected.configurable": "preferences.keymap"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Projects/JavaProjects/_002KnowYourProgress&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.41494253&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "oracle"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;oracle&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Projects\JavaProjects\_002KnowYourProgress" />
@@ -187,7 +167,8 @@
       <workItem from="1665098557462" duration="4884000" />
       <workItem from="1665111731460" duration="39476000" />
       <workItem from="1665464657524" duration="227000" />
-      <workItem from="1665549339318" duration="17662000" />
+      <workItem from="1665549339318" duration="20273000" />
+      <workItem from="1666044581559" duration="293000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1664749116289</created>
@@ -357,7 +338,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665366033507</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="version 0.13 developing. adding new version of StringBlockOperator.">
+      <created>1665633119286</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1665633119286</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -382,6 +370,7 @@
     <MESSAGE value="version 0.11 developing. Add database delegate." />
     <MESSAGE value="version 0.11 developing. Bugs fixed." />
     <MESSAGE value="version 0.12 developing. adding hibernate" />
-    <option name="LAST_COMMIT_MESSAGE" value="version 0.12 developing. adding hibernate" />
+    <MESSAGE value="version 0.13 developing. adding new version of StringBlockOperator." />
+    <option name="LAST_COMMIT_MESSAGE" value="version 0.13 developing. adding new version of StringBlockOperator." />
   </component>
 </project>
