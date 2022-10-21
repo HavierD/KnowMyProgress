@@ -72,13 +72,13 @@ public class StringBlockOperator1 implements StringBlockOperator {
         }
     }
 
-    public void uploadWords() throws SQLException, ClassNotFoundException {
+    public void uploadFoundWords() {
         timer.start(0);
         int index = 0;
         for (String e : foundWords) {
             index++;
             if (index % 100 == 0)System.out.println("uploading " + index + " / " + foundWords.size());
-            databaseOperator.addNewWord(e);
+            databaseOperator.uploadNewWord(e);
         }
         timer.cancel("Uploading found words ");
         foundWords.clear();
@@ -105,9 +105,9 @@ public class StringBlockOperator1 implements StringBlockOperator {
     public void uploadCurrentAasBDictionary() {
         for (Map.Entry<String, String> e : convertedWords.entrySet()){
             if (dictionaries.hasExistingAasB(e.getKey())) {
-                databaseOperator.addNewRecord(e.getValue());
+                databaseOperator.uploadNewRecord(e.getValue());
             }
-            databaseOperator.addNewAasB(e.getKey(), e.getValue());
+            databaseOperator.uploadNewAasB(e.getKey(), e.getValue());
         }
         System.out.println("Current converted words uploaded successfully!");
         convertedWords.clear();
@@ -133,7 +133,7 @@ public class StringBlockOperator1 implements StringBlockOperator {
         return returnedList;
     }
 
-    private static List<String> splitCamelCaseWords(List<String> stringList) {
+    private List<String> splitCamelCaseWords(List<String> stringList) {
         List<String> returnedList = new ArrayList<>();
         for (String e : stringList) {
             if(upperCaseLocation(e) == null){
@@ -168,22 +168,18 @@ public class StringBlockOperator1 implements StringBlockOperator {
     private List<String> tryToTransition(List<String> list) {
         List<String> returnedList = new ArrayList<>();
         for (String e : list) {
-            if (dictionaries.transitions(e) != null) {
                 returnedList.add(dictionaries.transitions(e));
-                continue;
-            }
-            returnedList.add(e);
         }
         return returnedList;
     }
 
 
     private void validateWords(List<String> wordsCheckedAasB) {
-        int progress = 0;
+        int process = 0;
         for (String e : wordsCheckedAasB) {
-            progress++;
-            if (progress % 100 == 0) {
-                System.out.println("validating progress: " + progress + " / " + wordsCheckedAasB.size());
+            process++;
+            if (process % 100 == 0) {
+                System.out.println("validating process: " + process + " / " + wordsCheckedAasB.size());
             }
             if(dictionaries.doesIgnore(e)) continue;
             if (isKnownWord(e)) continue;
@@ -215,7 +211,7 @@ public class StringBlockOperator1 implements StringBlockOperator {
 
     private boolean isKnownWord(String e) {
         if(dictionaries.hasSaved(e)){
-            foundWordsAdd(e);
+            foundWords.add(e);
             return true;
         }
         return false;
@@ -223,7 +219,7 @@ public class StringBlockOperator1 implements StringBlockOperator {
     private boolean isOnWeb(String e) {
         if (searchOnWeb(e)) {
             performanceMonitor.countOneSearch();
-            foundWordsAdd(e);
+            foundWords.add(e);
             return true;
         }
         return false;
@@ -231,9 +227,7 @@ public class StringBlockOperator1 implements StringBlockOperator {
 
 
 
-    private void foundWordsAdd(String e) {
-        foundWords.add(e);
-    }
+
 
     private boolean searchOnWeb(String word) {
         String url = "https://www.oxfordlearnersdictionaries.com/definition/english/" + word;
@@ -272,17 +266,14 @@ public class StringBlockOperator1 implements StringBlockOperator {
 
     public void checkConvertedWords(Scanner scanner, String[] correctingWords){
         for (String word : correctingWords) {
-            if (convertedWords.containsKey(word)) {
-                System.out.println("Treat { " + word + " } as? enter correct word OR d for discard");
-                String yn = scanner.nextLine().toLowerCase().replaceAll(" ","" );
-                if (yn.equals("d")) {
-                    convertedWords.remove(word);
-                    continue;
-                }
-                confirmAnAasBPair(scanner, word, yn);
+            if(!convertedWords.containsKey(word)) throw new RuntimeException("wrong entered word\"" + word + "\"");
+            System.out.println("Treat { " + word + " } as? enter correct word OR d for discard");
+            String yn = scanner.nextLine().toLowerCase().replaceAll(" ","" );
+            if (yn.equals("d")) {
+                convertedWords.remove(word);
                 continue;
             }
-            throw new RuntimeException("wrong entered word\"" + word + "\"");
+            confirmAnAasBPair(scanner, word, yn);
         }
         System.out.println("All converted words are checked!");
         System.out.println("Enter anything to continue ...");
@@ -329,7 +320,7 @@ public class StringBlockOperator1 implements StringBlockOperator {
             return;
         }
         if ((input2.equals(""))) {
-            databaseOperator.addNewAasB(unknownWord, input);
+            databaseOperator.uploadNewAasB(unknownWord, input);
             toRemove.add(unknownWord);
             return;
         }

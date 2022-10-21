@@ -40,6 +40,7 @@ public class WordsList {
     public WordsList(String word, String lastMeetTime) {
         this.word = word;
         this.lastMeetTime = lastMeetTime;
+        this.repetition = 1;
     }
 
     public String getWord() {

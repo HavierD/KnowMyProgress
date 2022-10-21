@@ -10,6 +10,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class SqlOperator implements DatabaseOperator {
 
@@ -62,7 +64,7 @@ public class SqlOperator implements DatabaseOperator {
         return wordDictionary;
     }
 
-    public void addNewAasB(String key, String value) {
+    public void uploadNewAasB(String key, String value) {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             Connection connection = getConnection();
@@ -75,15 +77,29 @@ public class SqlOperator implements DatabaseOperator {
         }
     }
 
+    @Override
+    public void uploadNewAasBs(ConcurrentHashMap<String, String> pairs) {
+        for(Map.Entry<String, String> set : pairs.entrySet()){
+            uploadNewAasB(set.getKey(), set.getValue());
+        }
+    }
+
     public void uploadNewIgnoredWord(String word) {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             Connection connection = getConnection();
             Statement statement = connection.createStatement();
             statement.executeUpdate("insert into ignore_dictionary  values ('" + word + "')");
-
+            connection.close();
         } catch (Exception e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void uploadNewIgnoredWords(List<String> words) {
+        for (String word : words) {
+            uploadNewIgnoredWord(word);
         }
     }
 
@@ -100,10 +116,10 @@ public class SqlOperator implements DatabaseOperator {
         } catch (Exception e) {
             throw e;
         }
-        addNewRecord(word);
+        uploadNewRecord(word);
     }
 
-    public void addNewWord(String word) {
+    public void uploadNewWord(String word) {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             Connection connection = getConnection();
@@ -113,16 +129,24 @@ public class SqlOperator implements DatabaseOperator {
                     "using (select '%1$s' word from dual) src " +
                     "on (dest.word = src.word) " +
                     "when matched then update set repetition = repetition + 1, last_meet_time = '%2$s' " +
-                    "when not matched then insert(word, repetition, last_meet_time) values (src.word, 1, '%2$s')", word, date.getCurrentWholeDate());
+                    "when not matched then insert(word, repetition, last_meet_time) values (src.word, 1, '%2$s')",
+                    word, date.getCurrentWholeDate());
             statement.executeUpdate(query);
             connection.close();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        addNewRecord(word);
+        uploadNewRecord(word);
     }
 
-    public void addNewRecord(String word) {
+    @Override
+    public void uploadNewWords(List<String> words) {
+        for (String word : words) {
+            uploadNewWord(word);
+        }
+    }
+
+    public void uploadNewRecord(String word) {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             Connection connection = getConnection();
@@ -133,6 +157,13 @@ public class SqlOperator implements DatabaseOperator {
 
         } catch (Exception e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void uploadNewRecords(List<String> words) {
+        for (String word : words) {
+            uploadNewRecord(word);
         }
     }
 

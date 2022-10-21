@@ -1,8 +1,11 @@
 package tech.havier;
 
 import tech.havier.databaseOperator.ConfigHavi1;
+import tech.havier.stringBlockOperator.StringBlockOperator;
+import tech.havier.stringBlockOperator.StringBlockOperator2;
 import tech.havier.timeToolkit.HavierTimer;
 
+import javax.print.DocFlavor;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +18,8 @@ public class debugging {
     static ConfigHavi1 config = new ConfigHavi1();
 
     public static void main(String[] args) throws Exception {
+
+
 //        testNoIndexPerformance();
 //        testIndexPerformance();
 
@@ -28,12 +33,21 @@ public class debugging {
         intTest.add(3);
         intTest.add(9);
 
-
-
-        System.out.println(intTest);
-
-        intTest = intTest.stream().filter(a->a<5).collect(Collectors.toList());
-        System.out.println(intTest);
+        var a = intTest.stream().map(e ->
+        {
+            if (e == 1) {
+                return null;
+            }
+            return e;
+        }).collect(Collectors.toList());
+        System.out.println(a);
+//
+//
+//
+//        System.out.println(intTest);
+//
+//        intTest = intTest.stream().filter(a->a<5).collect(Collectors.toList());
+//        System.out.println(intTest);
     }
 
 

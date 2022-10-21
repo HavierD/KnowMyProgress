@@ -83,20 +83,15 @@ public class Main {
         switch (option){
             case "1":
                 stringBlockOperator.printSavedWords();
-                System.out.println("Upload all found words? Y/N or enter indexes (seperated by whitespace) to ignore particular words");
+                System.out.println("Upload all found words? Y/N ");
                 String input = scanner.nextLine().toLowerCase();
                 String yn = input.replaceAll(" ", "");
                 if(yn.equals("")){
                     System.out.println("Uploading ...");
-                    stringBlockOperator.uploadWords();
+                    stringBlockOperator.uploadFoundWords();
                     showMenu2(stringBlockOperator);
                 }
                 else if(yn.equals("n")){
-                    showMenu2(stringBlockOperator);
-                }
-                else if (input.matches("[0-9 ]+")){
-                    int[] indexes = parseIndexes(input);
-                    stringBlockOperator.bunchIgnore(scanner, indexes);
                     showMenu2(stringBlockOperator);
                 }else{
                     System.out.println("invalid input!!!!!!");

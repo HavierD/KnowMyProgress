@@ -1,26 +1,27 @@
 package tech.havier.databaseOperator;
 
-import java.sql.Connection;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 public interface DatabaseOperator {
 
     HashMap<String, String> getTransitionDictionary();
-
     List<String> getWordDictionary();
+    List<String> getIgnoreDictionary();
 
-    void addNewAasB(String key, String value);
+    void uploadNewAasB(String key, String value);
+    void uploadNewAasBs(ConcurrentHashMap<String, String> pairs);
 
     void uploadNewIgnoredWord(String word);
-
-    List<String> getIgnoreDictionary();
+    void uploadNewIgnoredWords(List<String> words);
 
     void updateWord(String word) throws SQLException, ClassNotFoundException ;
 
-    void addNewWord(String word);
+    void uploadNewWord(String word);
+    void uploadNewWords(List<String> words);
 
-    void addNewRecord(String word);
+    void uploadNewRecord(String word);
+    void uploadNewRecords(List<String> words);
 }

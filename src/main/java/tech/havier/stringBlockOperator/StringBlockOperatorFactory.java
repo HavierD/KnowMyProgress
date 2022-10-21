@@ -5,7 +5,7 @@ import tech.havier.stringBlockDelegate.StringBlockImporter;
 public class StringBlockOperatorFactory {
     private int stringBlockOperatorVersion;
     public StringBlockOperator createStringBlockOperator(StringBlockImporter stringBlockImporter) throws Exception {
-        stringBlockOperatorVersion = 1;
+        stringBlockOperatorVersion = 2;
         switch (stringBlockOperatorVersion){
             case 1:
                 return new StringBlockOperator1(stringBlockImporter);

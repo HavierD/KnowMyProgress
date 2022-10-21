@@ -23,6 +23,10 @@ public class Test1 {
         this.nnum = nnum;
     }
 
+    public Test1(Integer a) {
+        this.a = a;
+    }
+
     public Test1() {
     }
 

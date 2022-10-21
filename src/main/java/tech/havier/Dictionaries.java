@@ -3,12 +3,14 @@ package tech.havier;
 import tech.havier.databaseOperator.DatabaseOperator;
 import tech.havier.databaseOperator.DatabaseFactory;
 
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Dictionaries {
 
     private final HashMap<String, String> wordTransitionDictionary;
+    private final List<String> selfTransitionedDictionary = new ArrayList<>();
+    private List<String> temporarySelfTransWords = new ArrayList<>();
     private final List<String> wordDictionary;
     private final List<String> ignoreDictionary;
 //    private final HashMap<String, String> suffixConvertDictionary = new HashMap<>();
@@ -20,17 +22,31 @@ public class Dictionaries {
         this.wordTransitionDictionary = databaseOperator.getTransitionDictionary();
         this.wordDictionary = databaseOperator.getWordDictionary();
         this.ignoreDictionary = databaseOperator.getIgnoreDictionary();
+        initializeSelfTransDic();
         initializeSuffixConvertDictionary();
-
     }
 
+    public List<String> getTemporarySelfTransWords() {
+        return temporarySelfTransWords;
+    }
 
     public String transitions(String rawWord) {
         rawWord = formatWord(rawWord);
-        if (wordTransitionDictionary.keySet().contains(rawWord)) {
-            return wordTransitionDictionary.get(rawWord);
-        }
-        return null;
+        if(!wordTransitionDictionary.containsKey(rawWord)) return rawWord;
+        return wordTransitionDictionary.get(rawWord);
+    }
+
+    public List<String> transitions(List<String> strings) {
+        return strings.stream()
+                .map(e->{
+                    if(selfTransitionedDictionary.contains(e)) {
+                        temporarySelfTransWords.add(e);
+                        return null;
+                    }
+                    return e;
+                })
+                .filter(Objects::nonNull)
+                .map(this::transitions).collect(Collectors.toList());
     }
 
     public boolean hasSaved(String rawWord) {
@@ -83,6 +99,12 @@ public class Dictionaries {
                 {"ed", "e"},
                 {"ied", "y"}
         };
+    }
+    private void initializeSelfTransDic() {
+        for (Map.Entry<String, String> entry : wordTransitionDictionary.entrySet()) {
+            if (!entry.getKey().equals(entry.getValue())) continue;
+            selfTransitionedDictionary.add(entry.getKey());
+        }
     }
 
 
