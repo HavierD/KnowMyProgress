@@ -5,7 +5,7 @@ import tech.havier.databaseOperator.sql.SqlOperator;
 
 public class DatabaseFactory {
 
-    private DatabaseType databaseType = DatabaseType.HIBERNATE;
+    public static final DatabaseType databaseType = DatabaseType.HIBERNATE;
 
     public DatabaseOperator createDatabaseOperator() throws Exception {
         switch (databaseType) {

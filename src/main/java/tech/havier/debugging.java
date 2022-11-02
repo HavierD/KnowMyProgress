@@ -1,6 +1,7 @@
 package tech.havier;
 
 import tech.havier.databaseOperator.ConfigHavi1;
+import tech.havier.databaseOperator.DatabaseFactory;
 import tech.havier.stringBlockOperator.StringBlockOperator;
 import tech.havier.stringBlockOperator.StringBlockOperator2;
 import tech.havier.timeToolkit.HavierTimer;
@@ -20,27 +21,52 @@ public class debugging {
     public static void main(String[] args) throws Exception {
 
 
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            Connection connection = DriverManager.getConnection(
+                    "jdbc:oracle:thin:@localhost:1521/XEPDB1",
+                    config.a, config.b );
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("select * from ignore_dictionary order by WORD");
+            while (resultSet.next()) {
+                System.out.println(resultSet.getString(1));
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
 //        testNoIndexPerformance();
 //        testIndexPerformance();
 
+//
+//        List<Integer> intTest = new ArrayList<>();
+//        intTest.add(2);
+//        intTest.add(1);
+//        intTest.add(5);
+//        intTest.add(8);
+//        intTest.add(1);
+//        intTest.add(3);
+//        intTest.add(9);
+//
+//        var a = intTest.stream().map(e ->
+//        {
+//            if (e == 1) {
+//                return null;
+//            }
+//            return e;
+//        }).collect(Collectors.toList());
+//        System.out.println(a);
 
-        List<Integer> intTest = new ArrayList<>();
-        intTest.add(2);
-        intTest.add(1);
-        intTest.add(5);
-        intTest.add(8);
-        intTest.add(1);
-        intTest.add(3);
-        intTest.add(9);
+//
+//        Movie aa = new Movie();
+//        change(aa);
+//        System.out.println(aa.getA());
 
-        var a = intTest.stream().map(e ->
-        {
-            if (e == 1) {
-                return null;
-            }
-            return e;
-        }).collect(Collectors.toList());
-        System.out.println(a);
+
+
+
+
 //
 //
 //
@@ -50,7 +76,9 @@ public class debugging {
 //        System.out.println(intTest);
     }
 
-
+    private static void change(Movie movie){
+        movie.setA(3);
+    }
 
 
 
@@ -88,5 +116,18 @@ public class debugging {
                 "jdbc:oracle:thin:@localhost:1521/XEPDB1",
                 config.a, config.b );
         return connection;
+    }
+}
+
+
+class Movie{
+    private int a = 1;
+
+    public int getA() {
+        return a;
+    }
+
+    public void setA(int a) {
+        this.a = a;
     }
 }

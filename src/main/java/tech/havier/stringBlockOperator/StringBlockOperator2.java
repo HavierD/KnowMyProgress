@@ -135,6 +135,7 @@ public class StringBlockOperator2 implements StringBlockOperator{
         havierTimer.start(0);
         var index = 0;
         databaseOperator.uploadNewWords(foundWords);
+        databaseOperator.uploadNewRecords(foundWords);
         havierTimer.cancel("Uploading found words ");
         foundWords.clear();
         System.out.println("All found words upload successfully! Found-word-list has been cleared.");
@@ -197,6 +198,7 @@ public class StringBlockOperator2 implements StringBlockOperator{
     private void correctUnknownWord(Scanner scanner, String unknownWord, String input ) throws SQLException, ClassNotFoundException {
         System.out.println("Treat {" + unknownWord + "} as {" + input + "} ? y or / input new word or / d(discard and ignore this word)" );
         String input2 = scanner.nextLine();
+
         if (input2.equals("d")) {
             toRemove.add(unknownWord);
             databaseOperator.uploadNewIgnoredWord(unknownWord);

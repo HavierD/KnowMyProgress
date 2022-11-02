@@ -1,15 +1,15 @@
 package tech.havier.stringBlockOperator;
 
+import tech.havier.databaseOperator.DatabaseFactory;
 import tech.havier.stringBlockDelegate.StringBlockImporter;
 
 public class StringBlockOperatorFactory {
-    private int stringBlockOperatorVersion;
     public StringBlockOperator createStringBlockOperator(StringBlockImporter stringBlockImporter) throws Exception {
-        stringBlockOperatorVersion = 2;
+        var stringBlockOperatorVersion = DatabaseFactory.databaseType;
         switch (stringBlockOperatorVersion){
-            case 1:
+            case ORACLE_SQL:
                 return new StringBlockOperator1(stringBlockImporter);
-            case 2:
+            case HIBERNATE:
                 return new StringBlockOperator2(stringBlockImporter);
             default:
                 throw new RuntimeException("Creating string block operator failed: unknown operator version " + stringBlockOperatorVersion);

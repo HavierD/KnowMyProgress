@@ -109,7 +109,6 @@ public class Main {
                     String[] correctingWords = transConfirm.split(" ");
                     stringBlockOperator.checkConvertedWords(scanner, correctingWords);
                 }
-
                 showMenu2(stringBlockOperator);
                 break;
             case "3":
