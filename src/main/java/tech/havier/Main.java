@@ -1,6 +1,5 @@
 package tech.havier;
 
-
 import tech.havier.stringBlockDelegate.StringBlockImporter;
 import tech.havier.stringBlockDelegate.TxtFileClearer;
 import tech.havier.stringBlockOperator.StringBlockOperator;

@@ -17,18 +17,18 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class StringBlockOperator2 implements StringBlockOperator{
 
-    private List<String> ignoredWords = new ArrayList<>();
+    private final List<String> ignoredWords = new ArrayList<>();
     private final List<String> toRemove = new ArrayList<>();
     private final List<String> foundWords = new ArrayList<>();
     private final ConcurrentHashMap<String, String> convertedWords = new ConcurrentHashMap<>();
-    private List<String> unknownWords = new ArrayList<>();
+    private final List<String> unknownWords = new ArrayList<>();
 
-    private HavierTimer havierTimer = new HavierTimer();
+    private final HavierTimer havierTimer = new HavierTimer();
 
-    private Dictionaries dictionaries;
-    private DatabaseOperator databaseOperator;
+    private final Dictionaries dictionaries;
+    private final DatabaseOperator databaseOperator;
 
-    private PerformanceMonitor performanceMonitor = new PerformanceMonitor();
+    private final PerformanceMonitor performanceMonitor = new PerformanceMonitor();
 
     public StringBlockOperator2(StringBlockImporter stringBlockImporter) throws Exception {
 

@@ -5,14 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ac61b3e-de78-49fe-a11d-7c28c43356ca" name="Changes" comment="version 0.13 developing. adding new version of StringBlockOperator.">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/DatabaseFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/DatabaseFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/debugging.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/debugging.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/DatabaseType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/databaseOperator/DatabaseType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/stringBlockOperator/StringBlockOperator2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/stringBlockOperator/StringBlockOperator2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/havier/stringBlockOperator/StringBlockOperatorFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/havier/stringBlockOperator/StringBlockOperatorFactory.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,7 +192,9 @@
       <workItem from="1666049964830" duration="35232000" />
       <workItem from="1666158696692" duration="7004000" />
       <workItem from="1666561652102" duration="15994000" />
-      <workItem from="1667428323752" duration="1464000" />
+      <workItem from="1667428323752" duration="15852000" />
+      <workItem from="1667856330294" duration="1807000" />
+      <workItem from="1667962743797" duration="143000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1664749116289</created>
@@ -387,7 +385,21 @@
       <option name="project" value="LOCAL" />
       <updated>1666334844661</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="version 0.13 developing. adding new version of StringBlockOperator.">
+      <created>1667429797894</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1667429797894</updated>
+    </task>
+    <task id="LOCAL-00029" summary="version 0.13 developing. adding new version of StringBlockOperator.">
+      <created>1667429819417</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1667429819417</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
