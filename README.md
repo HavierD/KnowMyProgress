@@ -23,4 +23,5 @@ It is also one of my Java exercising tool for me. Therefore, most of Java featur
 # TODO
 * The program is currently using my local Oracle database. For those without an IT background who are interested in using it, I plan to develop a version that uses Excel to store and visualize data.
 * To make the program more accessible to others, I plan to add a graphical user interface (maybe using JavaFX or GWT).
+* Consider using Spring to refactor it in the future.
 
