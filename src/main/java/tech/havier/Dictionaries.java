@@ -17,6 +17,11 @@ public class Dictionaries {
     private String[][] suffixConvertDictionary;
 
 
+    public List<String> getWordDictionaryByRepetitions() throws Exception {
+        DatabaseOperator databaseOperator = new DatabaseFactory().createDatabaseOperator();
+        return databaseOperator.getWordDictionaryByRepetitions();
+    }
+
     public Dictionaries() throws Exception {
         DatabaseOperator databaseOperator = new DatabaseFactory().createDatabaseOperator();
         this.wordTransitionDictionary = databaseOperator.getTransitionDictionary();
@@ -61,18 +66,12 @@ public class Dictionaries {
 
     public boolean doesIgnore(String word) {
         word = formatWord(word);
-        if(ignoreDictionary.contains(word)){
-            return true;
-        }
-        return false;
+        return ignoreDictionary.contains(word);
     }
 
     public boolean hasExistingAasB(String word) {
         word = formatWord(word);
-        if (wordTransitionDictionary.containsKey(word)) {
-            return true;
-        }
-        return false;
+        return wordTransitionDictionary.containsKey(word);
     }
 
     public String[][] getSuffixConvertDictionary() {

@@ -311,6 +311,7 @@ public class StringBlockOperator1 implements StringBlockOperator {
         scanner.nextLine();
     }
 
+
     private void correctUnknownWord(Scanner scanner, String unknownWord, String input ) throws SQLException, ClassNotFoundException {
         System.out.println("Treat {" + unknownWord + "} as {" + input + "} ? y or / input new word or / d(discard and ignore this word)" );
         String input2 = scanner.nextLine();

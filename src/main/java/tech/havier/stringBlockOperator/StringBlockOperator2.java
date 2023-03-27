@@ -17,7 +17,6 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class StringBlockOperator2 implements StringBlockOperator{
 
-    private final List<String> ignoredWords = new ArrayList<>();
     private final List<String> toRemove = new ArrayList<>();
     private final List<String> foundWords = new ArrayList<>();
     private final ConcurrentHashMap<String, String> convertedWords = new ConcurrentHashMap<>();
@@ -195,6 +194,7 @@ public class StringBlockOperator2 implements StringBlockOperator{
         System.out.println("Enter anything to continue");
         scanner.nextLine();
     }
+
     private void correctUnknownWord(Scanner scanner, String unknownWord, String input ) throws SQLException, ClassNotFoundException {
         System.out.println("Treat {" + unknownWord + "} as {" + input + "} ? y or / input new word or / d(discard and ignore this word)" );
         String input2 = scanner.nextLine();

@@ -24,4 +24,6 @@ public interface DatabaseOperator {
 
     void uploadNewRecord(String word);
     void uploadNewRecords(List<String> words);
+
+    List<String> getWordDictionaryByRepetitions();
 }

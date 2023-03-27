@@ -84,7 +84,7 @@ public class HibernateOperator implements DatabaseOperator {
         EntityManager em = ef.createEntityManager();
         em.getTransaction().begin();
         AasB pair = new AasB(key, value);
-        em.persist(pair);
+        em.merge(pair);
         em.getTransaction().commit();
         em.close();
     }
@@ -95,7 +95,7 @@ public class HibernateOperator implements DatabaseOperator {
         em.getTransaction().begin();
         for (Map.Entry<String, String> set : pairs.entrySet()) {
             AasB pair = new AasB(set.getKey(), set.getValue());
-            em.persist(pair);
+            em.merge(pair);
         }
         em.getTransaction().commit();
         em.close();
@@ -178,6 +178,18 @@ public class HibernateOperator implements DatabaseOperator {
         });
         em.getTransaction().commit();
         em.close();
+    }
+
+    @Override
+    public List<String> getWordDictionaryByRepetitions() {
+        List<String> list = new ArrayList<>();
+        EntityManager em = ef.createEntityManager();
+        em.getTransaction().begin();
+        var resultList = em.createQuery("select w from WordsList w where repetition > 3 order by word",
+                WordsList.class).getResultList();
+        resultList.forEach((word)->{list.add(word.getWord());});
+        System.out.println("There are " + list.size() + " words which has more than 3 repetitions.");
+        return list;
     }
 
     private void initializeWordDic() {

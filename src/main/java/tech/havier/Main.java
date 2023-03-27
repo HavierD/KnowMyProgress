@@ -6,6 +6,9 @@ import tech.havier.stringBlockOperator.StringBlockOperator;
 import tech.havier.stringBlockOperator.StringBlockOperatorFactory;
 import tech.havier.timeToolkit.HavierTimer;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -20,15 +23,17 @@ public class Main {
         System.out.println("-------------------");
         System.out.println("MAIN MENU: ");
         System.out.println("Please choose: ");
-        System.out.println("1. Retrieve words from .txt.");
+        System.out.println("1. Retrieve words from rawString.txt.");
+        System.out.println("2. Words export into rawString.txt");
         System.out.println();
         Scanner scanner = new Scanner(System.in);
         String userInput = scanner.nextLine();
-        switch (userInput){
+        switch (userInput) {
             case "1":
                 retrieveWords();
                 break;
             case "2":
+                exportWords();
                 break;
             case "3":
                 break;
@@ -39,8 +44,31 @@ public class Main {
         }
     }
 
-    private static void retrieveWords() throws Exception {
+    private static void exportWords() throws Exception {
+        File file = new File("rawString.txt");
+        Scanner scanner = new Scanner(file);
+        if (scanner.hasNextLine()) {
+            System.out.println("please import the rawString.txt first. This .txt is not empty.");
+            showMenu1();
+            return;
+        }
+        Dictionaries dictionaries = new Dictionaries();
+        List<String> words = dictionaries.getWordDictionaryByRepetitions();
+        try (FileWriter writer = new FileWriter("rawString.txt")) {
+            StringBuilder builder = new StringBuilder();
+            words.forEach((word) -> {
+                builder.append(" ");
+                builder.append(word);
+            });
+            writer.write(builder.toString());
+            System.out.println("Export words successfully!");
+        }catch (Exception e){
+            System.out.println("cannot create file writer!!");
+        }
+        showMenu1();
+    }
 
+    private static void retrieveWords() throws Exception {
 
         HavierTimer timer = new HavierTimer();
         timer.start(5);
@@ -79,20 +107,19 @@ public class Main {
 
         String option = scanner.nextLine();
 
-        switch (option){
+        switch (option) {
             case "1":
                 stringBlockOperator.printSavedWords();
                 System.out.println("Upload all found words? Y/N ");
                 String input = scanner.nextLine().toLowerCase();
                 String yn = input.replaceAll(" ", "");
-                if(yn.equals("")){
+                if (yn.equals("")) {
                     System.out.println("Uploading ...");
                     stringBlockOperator.uploadFoundWords();
                     showMenu2(stringBlockOperator);
-                }
-                else if(yn.equals("n")){
+                } else if (yn.equals("n")) {
                     showMenu2(stringBlockOperator);
-                }else{
+                } else {
                     System.out.println("invalid input!!!!!!");
                     showMenu2(stringBlockOperator);
                 }
@@ -101,10 +128,10 @@ public class Main {
                 stringBlockOperator.printConvertedWords();
                 System.out.println("Do you want to confirm all the transitions? y/ or enter word(s) to correct");
                 String transConfirm = scanner.nextLine();
-                if(transConfirm.equals("")){
+                if (transConfirm.equals("")) {
                     System.out.println("uploading... ");
                     stringBlockOperator.uploadCurrentAasBDictionary();
-                }else{
+                } else {
                     String[] correctingWords = transConfirm.split(" ");
                     stringBlockOperator.checkConvertedWords(scanner, correctingWords);
                 }
@@ -129,11 +156,11 @@ public class Main {
         String yn = scanner.nextLine().toLowerCase().replaceAll(" ", "");
         if (yn.equals("")) {
             System.out.println("clearing...");
-            TxtFileClearer.txtFileClearer();
+            TxtFileClearer.clean();
             System.out.println("importing txt file clear successfully!");
         } else if (yn.equals("n")) {
 
-        }else {
+        } else {
             System.out.println("unknown type in!");
             clearTxtConfirmation(scanner);
         }
@@ -141,7 +168,7 @@ public class Main {
 
     private static int[] parseIndexes(String string) {
         String[] indexes = string.split(" ");
-        int[] intIndexes =new int[indexes.length];
+        int[] intIndexes = new int[indexes.length];
         try {
             for (int i = 0; i < indexes.length; i++) {
                 intIndexes[i] = Integer.parseInt(indexes[i]);

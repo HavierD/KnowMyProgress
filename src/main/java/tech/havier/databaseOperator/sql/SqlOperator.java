@@ -27,12 +27,6 @@ public class SqlOperator implements DatabaseOperator {
     HavierTimer timer = new HavierTimer();
 
 
-    public static void main(String[] args) {
-        String word = "run";
-
-    }
-
-
 
 
     public static SqlOperator getSqlOperatorInstance() throws Exception {
@@ -165,6 +159,11 @@ public class SqlOperator implements DatabaseOperator {
         for (String word : words) {
             uploadNewRecord(word);
         }
+    }
+
+    @Override
+    public List<String> getWordDictionaryByRepetitions() {
+        return null;
     }
 
     private void initializeWordDictionaryFromSql() throws Exception {
