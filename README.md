@@ -17,8 +17,6 @@ Data Persistence: JPA, Hibernate, SQL
 
 Main Language: Java
 
-It is also one of my Java exercising tool for me. Therefore, most of Java features are all used inside the program 
-(e.g., Interfaces & Factory Patterns for different implementations; Stream for processing word list etc.)
 
 # TODO
 * The program is currently using my local Oracle database. For those without an IT background who are interested in using it, I plan to develop a version that uses Excel to store and visualize data.

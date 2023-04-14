@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ac61b3e-de78-49fe-a11d-7c28c43356ca" name="Changes" comment="version 0.2 developing.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,7 +52,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Projects/AngularProjects/HavierToDoApp/havier-todo&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Projects/springProjects/conference/conference&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
@@ -83,7 +84,7 @@
       <recent name="tech.havier" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.CommandLineMouseListener">
     <configuration name="CommandLineMouseListener" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="tech.havier.imageWordsOperator.CommandLineMouseListener" />
       <module name="_002KnowYourProgress" />
@@ -102,7 +103,7 @@
       <module name="_002KnowYourProgress" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="tech.havier.*" />
+          <option name="PATTERN" value="tech.havier.Main" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -141,7 +142,7 @@
       <module name="_002KnowYourProgress" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="tech.havier.*" />
+          <option name="PATTERN" value="tech.havier.Main" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -151,7 +152,6 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
         <item itemvalue="Application.ScreenshotOperator" />
         <item itemvalue="Application.CommandLineMouseListener" />
         <item itemvalue="Application.debugging" />
@@ -202,7 +202,11 @@
       <workItem from="1677646527567" duration="905000" />
       <workItem from="1679352679652" duration="40000" />
       <workItem from="1679352858774" duration="5000" />
-      <workItem from="1679893508388" duration="2382000" />
+      <workItem from="1679893508388" duration="2410000" />
+      <workItem from="1679953468859" duration="4478000" />
+      <workItem from="1680216605195" duration="52000" />
+      <workItem from="1680499702324" duration="1846000" />
+      <workItem from="1681448283407" duration="19000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1664749116289</created>
@@ -421,7 +425,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679895802755</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="version 0.2 developing.">
+      <created>1679895916510</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1679895916510</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
